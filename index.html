@@ -5,7 +5,256 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>James Oliver</title>
   <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>James Oliver</title>
+  <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Palatino Linotype', 'Palatino', 'Book Antiqua', Georgia, serif;
+      background: #ffffff;
+      color: #0a0a0a;
+      font-size: 19px;
+      line-height: 1.6;
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 80px 64px 48px;
+      max-width: 820px;
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      color: #444;
+      line-height: 1.75;
+    }
+
+    .papers { padding: 40px 64px 80px; }
+
+    .papers-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 0;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .papers-title { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: #888; }
+    .papers-count { font-size: 13px; color: #888; }
+
+    .paper-item {
+      display: block;
+      padding: 32px 0;
+      border-bottom: 1px solid #e0e0e0;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .paper-item:hover .paper-title {
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .paper-title {
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 1.35;
+      margin-bottom: 10px;
+      color: #0a0a0a;
+    }
+
+    .paper-abstract { font-size: 14px; color: #555; line-height: 1.75; }
+
+
+
+    @media (max-width: 700px) {
+      .hero { padding: 56px 24px 56px; }
+      .papers { padding: 0 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="hero">
+    <p class="hero-tagline">Reality is a symphony and these papers are the sheet music trying to capture it. Shadows cast by a flame, discrete pictures of a continuous reality.</p>
+  </div>
+
+  <section class="papers" id="papers">
+    <div class="papers-header">
+      <span class="papers-title">Papers</span>
+    </div>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.176790785.58412777/v1" target="_blank">
+      <div class="paper-title">All Disease Is One Disease</div>
+      <div class="paper-abstract">Every disease that medicine has ever named shares one mechanism: the body sustains damage faster than it can repair itself. This paper derives that inevitability from first principles and generates falsifiable predictions that distinguish the framework from conventional disease-specific models.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.176790785.58412777/v1" target="_blank">
+      <div class="paper-title">The Asymmetry of Glucose</div>
+      <div class="paper-abstract">Glucose spikes and crashes are not symmetric events. The physiological damage from a spike is not undone by returning to baseline. This paper formalizes the asymmetry and derives its implications for dietary decision-making and metabolic health strategy.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5691" target="_blank">
+      <div class="paper-title">The Ideal Gas Tautology</div>
+      <div class="paper-abstract">The ideal gas law is not a discovery about gases. It is a mathematical identity that defines what ideal means. This paper examines how the law's tautological structure has been systematically misread as empirical content about the physical world.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5595" target="_blank">
+      <div class="paper-title">Entropy is Not Disorder</div>
+      <div class="paper-abstract">Entropy counts accessible configurations, not disorder. This paper demonstrates that the disorder metaphor fails both mathematically and physically, and that entropy is correctly understood as a measure of constraint-dependent possibility space.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5601" target="_blank">
+      <div class="paper-title">Collect or Release</div>
+      <div class="paper-abstract">All energy generation reduces to one binary: collect energy already in motion, or release energy held in storage. This framework explains why renewable sources are intermittent while fossil fuels are dispatchable, and why cost structures diverge predictably between technology classes.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5571" target="_blank">
+      <div class="paper-title">Renewable Energy Is Nuclear</div>
+      <div class="paper-abstract">Solar, wind, and hydroelectric power are nuclear energy collection systems, each harvesting energy from the Sun's fusion reactor through different transformation pathways. The standard distinction between renewable and nuclear energy is physically incoherent.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5403" target="_blank">
+      <div class="paper-title">The Area-Energy Principle</div>
+      <div class="paper-abstract">When environmental gradients are fixed and material properties approach their limits, surface area becomes the dominant variable controlling energy exchange. This paper reveals a universal constraint hierarchy and demonstrates its explanatory power across biology, engineering, and architecture.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.31224/5402" target="_blank">
+      <div class="paper-title">The Geodesic Dome: Approaching Architectural Perfection</div>
+      <div class="paper-abstract">Geodesic domes derive structural strength from triangulated geometry rather than material bulk, making them among the most efficient large-scale structures possible. This paper traces the geometric principles underlying their performance and argues for geodesic logic as a general design framework for fault-tolerant systems.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14947338" target="_blank">
+      <div class="paper-title">The Discrete Reality Tetralogy</div>
+      <div class="paper-abstract">Four interconnected papers examining the mathematical relationship between discrete representations and continuous models. Classical derivatives and smoothness cannot exist on domains with finite resolution, yet continuous mathematics works at human scales because averaging suppresses fluctuations by 1 over the square root of n.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.175096308.87294983/v2" target="_blank">
+      <div class="paper-title">Perfect Smoothness Is Impossible: A Theorem of Discrete Reality</div>
+      <div class="paper-abstract">This paper provides the first formal proof that perfect mathematical smoothness cannot exist in any physical or computational system. All physical substrates impose minimum spacing constraints that make the limit required for smoothness mathematically unattainable.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14891983" target="_blank">
+      <div class="paper-title">The Infinite Principle: The Mathematics of Optimism</div>
+      <div class="paper-abstract">Any option with unbounded upside mathematically dominates alternatives with bounded outcomes, provided the downside is finite and the probability of success is nonzero. This transforms optimism from a subjective disposition into an objective necessity rooted in expected value theory.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14861534" target="_blank">
+      <div class="paper-title">Redefining Cancer: A Unified Framework for Predicting, Preventing, and Stabilizing Malignancy</div>
+      <div class="paper-abstract">Cancer is defined here as an entropic process, a system where mutation-driven disorder competes with repair mechanisms. By formalizing DNA entropy as a quantifiable metric, the paper establishes a predictive model for cancer progression and identifies DNA repair as the fundamental intervention point.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14724989" target="_blank">
+      <div class="paper-title">The Blind Turkey: How Observer Ignorance Creates the Illusion of Black Swans</div>
+      <div class="paper-abstract">The Black Swan theory mistakes gaps in knowledge for inherent randomness. This paper introduces the Blind Turkey Principle: unpredictability is not a feature of reality but a failure to recognize system drivers, and Black Swans dissolve when viewed with sufficient understanding.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.175079899.95001857/v1" target="_blank">
+      <div class="paper-title">Rethinking Money, Reclaiming Freedom: Reframing Wealth as Objective Agency</div>
+      <div class="paper-abstract">Wealth is reframed here not as a source of happiness or status but as a structural expander of objective agency, the real-world range of viable choices available to an individual. The paper introduces Agency-Adjusted Income as a more accurate proxy for usable freedom than GDP or gross wages.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.175070920.05696942/v1" target="_blank">
+      <div class="paper-title">ROIC Wins Wars: Capital Efficiency in Protracted Conflict</div>
+      <div class="paper-abstract">In prolonged conflicts, the ability to sustain effective operations matters more than raw firepower. This paper introduces Warfare Return on Invested Capital and demonstrates through historical case studies how lower-cost actors prevail through asymmetric efficiency.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.175070787.77918323/v1" target="_blank">
+      <div class="paper-title">Medicine's Blind Spot: You Can't Treat What You Can't Name</div>
+      <div class="paper-abstract">Medical vocabulary was built to respond to crisis, and that vocabulary may obscure the continuous physiological changes that occur before diagnosis. Expanding language to include spectrum and trajectory-based states could unlock earlier and more proactive models of care.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.175070965.50115237/v1" target="_blank">
+      <div class="paper-title">Geometry of Power: The Strategic Control of Decision Spaces</div>
+      <div class="paper-abstract">Power in conflict is best understood geometrically, as the ratio of moves available to one actor versus another. Compressing an opponent's decision space, logistically, financially, or psychologically, can yield strategic outcomes without direct confrontation.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173921642.22056702/v3" target="_blank">
+      <div class="paper-title">The Law of Oxygen: The First Principle of Warfare</div>
+      <div class="paper-abstract">History's greatest military victories were won not by those who fought best, but by those who ensured their enemy could not fight at all. From Mongol conquests to modern cyberwarfare, control of supply chains has dictated outcomes more decisively than battlefield engagements.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14839872" target="_blank">
+      <div class="paper-title">The Asymptote of Civilization: Humanity's Journey from Passengers to Pilots</div>
+      <div class="paper-abstract">Humanity's historical trajectory has been defined by an unbroken expansion of agency, our increasing ability to control our environment, movement, and destiny. This paper introduces the Cosmic Agency Ratio and argues that mobile world-systems are not just a possibility but an evolutionary necessity.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14947338" target="_blank">
+      <div class="paper-title">Initial Conditions: Why Trauma Persists</div>
+      <div class="paper-abstract">Trauma persists not because of psychological weakness but because of physics, an unbroken chain of causality linking earliest experiences to present reality. This paper reframes trauma as the natural outcome of a complex adaptive system initialized under specific conditions.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14947338" target="_blank">
+      <div class="paper-title">The Algorithm of Atrocity: How Ordinary Humans Do the Inhumane</div>
+      <div class="paper-abstract">Atrocity is not a bug in the human system but a feature running on a flawed script. This paper maps the predictable process by which a dehumanizing premise allows ordinary people to commit extraordinary harm while experiencing themselves as heroes saving their world.</div>
+    </a>
+
+    <a class="paper-item" href="https://zenodo.org/records/14947338" target="_blank">
+      <div class="paper-title">Epistemological Debugging: Therapy as Premise Falsification</div>
+      <div class="paper-abstract">Psychological suffering is the logical output of flawed foundational beliefs, premises that trap people in helplessness by annihilating their sense of agency. The only resolution is to systematically falsify these premises, which reveals the common algorithm at the heart of all effective therapeutic modalities.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.174310205.57587125/v1" target="_blank">
+      <div class="paper-title">The United States of Code: The Operating System of American Democracy</div>
+      <div class="paper-abstract">The U.S. Constitution is treated here as an executable base system, laws as modular instructions, amendments as updates, and judicial review as a debugging protocol. Framing democracy as an open-source codebase reveals structural limitations while pointing toward more modular and resilient models of governance.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.174111198.81472772/v1" target="_blank">
+      <div class="paper-title">The War for Reality: Artificial Intelligence, Human Agency, and the Collapse of Truth</div>
+      <div class="paper-abstract">The real risk of AI is not autonomous threat but humans leveraging it to manipulate perception at scale. The exponential growth of synthetic content will drive the ratio of authentic to artificial information toward zero, making decentralized collective verification the only scalable defense.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.174102772.24951784/v1" target="_blank">
+      <div class="paper-title">A Republic, If You Can Keep It: How AI Amplifies America's Capacity for Self-Destruction</div>
+      <div class="paper-abstract">Democracy depends on social cohesion and shared reality, both of which are being systematically undermined by AI-driven content personalization and algorithmic opacity. Solutions require decentralized community moderation, mandatory content labeling, and widespread digital literacy.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.174077577.76841431/v2" target="_blank">
+      <div class="paper-title">Thought Without Friction: The Death of Writing and the Birth of Pure Thought</div>
+      <div class="paper-abstract">AI is not replacing thought. It is eliminating the inefficiency of manually translating thought into text, just as calculators removed the inefficiency of manual computation. The value of thought lies in the idea, not in the mechanics of its transmission.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173990727.70401064/v2" target="_blank">
+      <div class="paper-title">The Illusion of Knowledge: Why Modern Science Fails to Find Truth</div>
+      <div class="paper-abstract">Modern science excels at pattern recognition but frequently confuses statistical significance with truth. The precision-scope trade-off forces researchers into a dilemma between precise but impractical studies and broad but causally weak ones, exacerbating the reproducibility crisis.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173879129.99772952/v1" target="_blank">
+      <div class="paper-title">The Crumbling Ivory Tower: How Academia Abandoned Knowledge for Status</div>
+      <div class="paper-abstract">Academia claims to sell knowledge, but knowledge is now free, so universities sell status instead. This paper examines how academia transitioned from knowledge gatekeeper to credential gatekeeper, and argues that higher education must evolve into an open, decentralized model or face obsolescence.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.174076928.85570162/v1" target="_blank">
+      <div class="paper-title">The GLP-1 Illusion: Weight Loss Without Metabolic Health</div>
+      <div class="paper-abstract">GLP-1 receptor agonists produce weight loss but do not restore metabolic function, and once treatment stops, weight is regained and metabolic markers revert to baseline. Obesity is a symptom, not the root cause of metabolic dysfunction, and treating it alone leaves the underlying system broken.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173990499.96081265/v2" target="_blank">
+      <div class="paper-title">The Chronic Crisis: How Public Health Was Built to Fail</div>
+      <div class="paper-abstract">Chronic diseases now account for 74% of global deaths, yet the system meant to prevent them actively perpetuates them. This paper identifies the hidden financial levers shaping public health and presents a blueprint for systemic change.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173990463.31703496/v2" target="_blank">
+      <div class="paper-title">Metabolic Overload: How Modern Diets Break the Body</div>
+      <div class="paper-abstract">The human metabolism evolved under conditions of scarcity and is not equipped for continuous carbohydrate exposure. Obesity, type 2 diabetes, fatty liver disease, and cardiovascular disorders are not separate conditions. They are the same failure state manifesting in different tissues at different speeds.</div>
+    </a>
+
+    <a class="paper-item" href="https://doi.org/10.22541/au.173990720.09462696/v2" target="_blank">
+      <div class="paper-title">Metabolic Eating: A Return to Biological Reality</div>
+      <div class="paper-abstract">Modern eating patterns are fundamentally misaligned with human physiology. The body evolved to function through cycles of eating and fasting, not continuous intake. This paper presents a structured framework to restore metabolic stability by working with the body's natural rhythms instead of against them.</div>
+    </a>
+
+  </section>
+
+</body>
+</html>; }
 
     body {
       font-family: 'Palatino Linotype', 'Palatino', 'Book Antiqua', Georgia, serif;
