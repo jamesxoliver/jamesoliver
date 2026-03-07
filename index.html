@@ -7,6 +7,10 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: 'Palatino Linotype', 'Palatino', 'Book Antiqua', Georgia, serif;
       background: #ffffff;
@@ -15,6 +19,7 @@
       line-height: 1.6;
       max-width: 860px;
       margin: 0 auto;
+      -webkit-font-smoothing: antialiased;
     }
 
     .hero {
@@ -49,8 +54,8 @@
       text-decoration: none;
       color: inherit;
       opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.5s ease, transform 0.5s ease;
+      transform: translateY(24px);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.1, 0.25, 1), transform 0.7s cubic-bezier(0.25, 0.1, 0.25, 1);
     }
 
     .paper-item.visible {
