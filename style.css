@@ -1,10 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>James Oliver</title>
-<style>
 /* The whole design system. ~30 lines that do the work. */
 
 body {
@@ -66,22 +59,3 @@ ul.tree li { margin: 0 0 0.6rem; }
 /* nested details indentation */
 details.branch details.branch { margin-left: 1.5rem; }
 details.branch ul.papers li { margin-bottom: 0.5rem; }
-</style>
-</head>
-<body>
-
-<h1>James Oliver</h1>
-
-<ul class="tree">
-  <li><a href="branch-one/">Branch One</a>
-<ul class="tree">
-  <li><a href="branch-one/sub-branch/">Sub Branch</a></li>
-</ul></li>
-  <li><a href="branch-three/">Branch Three</a></li>
-  <li><a href="branch-two/">Branch Two</a></li>
-</ul>
-
-<p class="up"><a href="all.html">All papers</a></p>
-
-</body>
-</html>
