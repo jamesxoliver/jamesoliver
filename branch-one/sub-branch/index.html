@@ -5,67 +5,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Sub Branch — James Oliver</title>
 <style>
-/* The whole design system. ~30 lines that do the work. */
+/* The whole design system. Tightened. */
 
 body {
   font-family: Georgia, "Times New Roman", serif;
-  font-size: 18px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   color: #1a1a1a;
-  max-width: 38rem;          /* ~65-70 chars per line */
-  margin: 4rem auto;
+  max-width: 36rem;
+  margin: 2.5rem auto;
   padding: 0 1.25rem;
 }
 
-a { color: #1a1a1a; text-decoration: underline; text-underline-offset: 3px; }
+a { color: #1a1a1a; text-decoration: underline; text-underline-offset: 2px; }
 
 /* listing titles: structure marks them as links; underline on hover only */
-.papers a, .branch h2 a, .up a { text-decoration: none; }
-.papers a:hover, .branch h2 a:hover, .up a:hover { text-decoration: underline; }
+.papers a, .tree a, .branch h2 a, .up a { text-decoration: none; }
+.papers a:hover, .tree a:hover, .branch h2 a:hover, .up a:hover { text-decoration: underline; }
 
-h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 0.25rem; }
-h2 { font-size: 1.15rem; margin: 2.5rem 0 0.5rem; }
+h1 { font-size: 1.3rem; line-height: 1.25; margin: 0 0 1.25rem; }
+h2 { font-size: 1.05rem; margin: 1.75rem 0 0.5rem; }
 
-.tagline { color: #555; font-style: italic; margin: 0 0 2.5rem; }
+.tagline { color: #555; font-style: italic; margin: -0.75rem 0 1.5rem; }
 
 /* breadcrumb / nav back up the tree */
-.up { font-size: 0.9rem; color: #555; margin-bottom: 2rem; }
+.up { font-size: 0.85rem; color: #555; margin-bottom: 1.5rem; }
 
 /* paper listings within a branch or index */
 .papers { list-style: none; padding: 0; margin: 0; }
-.papers li { margin: 0 0 1.4rem; }
-.papers .desc { color: #444; font-size: 0.95rem; display: block; margin-top: 0.15rem; }
+.papers li { margin: 0 0 0.45rem; }
 
-/* branch headings on the index */
-.branch { margin-top: 2.5rem; }
-.branch h2 { margin-bottom: 0.75rem; }
+/* nested branch tree on the root index */
+ul.tree { list-style: none; padding: 0; margin: 0; }
+ul.tree ul.tree { padding-left: 1.25rem; margin-top: 0.3rem; }
+ul.tree li { margin: 0 0 0.45rem; }
+
+/* details-variant index */
+details.branch summary { cursor: pointer; margin: 0 0 0.45rem; }
+details.branch ul.papers { margin: 0.3rem 0 0.6rem 1.25rem; }
+details.branch details.branch { margin-left: 1.25rem; }
 
 /* the actions row at the foot of a paper */
 .actions {
-  margin-top: 3rem;
-  padding-top: 1.25rem;
+  margin-top: 2.25rem;
+  padding-top: 1rem;
   border-top: 1px solid #ddd;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #555;
 }
 .actions a { margin-right: 1.25rem; }
 
 /* paper body prose */
-.paper p { margin: 0 0 1.1rem; }
-
-/* details-variant index */
-details.branch summary { cursor: pointer; font-size: 1.15rem; margin: 1.5rem 0 0.5rem; }
-details.branch[open] summary { margin-bottom: 0.75rem; }
-details.branch ul.papers { margin-left: 1.25rem; }
-
-/* nested branch tree on the root index */
-ul.tree { list-style: none; padding: 0; margin: 0; }
-ul.tree ul.tree { padding-left: 1.5rem; margin-top: 0.4rem; }
-ul.tree li { margin: 0 0 0.6rem; }
-
-/* nested details indentation */
-details.branch details.branch { margin-left: 1.5rem; }
-details.branch ul.papers li { margin-bottom: 0.5rem; }
+.paper p { margin: 0 0 1rem; }
 </style>
 </head>
 <body>
