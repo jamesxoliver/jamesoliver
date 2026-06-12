@@ -174,13 +174,13 @@ def build_root():
     # 1. root index: the nested branch tree
     body = f"<h1>{SITE_TITLE}</h1>\n\n"
     body += branch_tree(ROOT, ROOT) + "\n"
-    body += '\n<p class="up"><a href="all.html">All papers</a></p>\n'
+    body += '\n<p class="up"><a href="all.html">all papers</a></p>\n'
     write(os.path.join(ROOT, "index.html"), page(SITE_TITLE, body))
 
     # 2. details variant: nested dropdowns, papers included
     body = f"<h1>{SITE_TITLE}</h1>\n\n"
     body += details_tree(ROOT, ROOT)
-    body += '\n<p class="up"><a href="all.html">All papers</a></p>\n'
+    body += '\n<p class="up"><a href="all.html">all papers</a></p>\n'
     write(os.path.join(ROOT, "index-details.html"),
           page(f"{SITE_TITLE} (details variant)", body))
 
@@ -195,7 +195,7 @@ def build_root():
     everything.sort(key=lambda p: paper_title(p).lower())
 
     body = f'<div class="up"><a href="./">{SITE_TITLE}</a></div>\n\n'
-    body += "<h1>All papers</h1>\n\n"
+    body += "<h1>all papers</h1>\n\n"
     body += papers_list(everything, ROOT) + "\n"
     write(os.path.join(ROOT, "all.html"), page(f"All papers — {SITE_TITLE}", body))
 
