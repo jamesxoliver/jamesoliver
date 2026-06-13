@@ -50,3 +50,16 @@ details.branch details.branch { margin-left: 1.25rem; }
 
 /* paper body prose */
 .paper p { margin: 0 0 1rem; }
+
+/* full-text paper elements */
+.paper h2 { font-size: 1.05rem; margin: 1.75rem 0 0.5rem; }
+.paper .scope { color: #555; font-size: 0.9rem; font-style: italic; border-left: 2px solid #ddd; padding-left: 0.9rem; margin: 0 0 1.5rem; }
+.paper .caption { color: #555; font-size: 0.85rem; margin: 0.5rem 0 1.25rem; }
+.paper .kicker { text-align: center; font-weight: bold; margin: 2rem 0 0.5rem; line-height: 1.5; }
+
+/* laws table */
+table.laws { border-collapse: collapse; width: 100%; margin: 1.25rem 0 0.5rem; font-size: 0.92rem; }
+table.laws th, table.laws td { text-align: left; vertical-align: top; padding: 0.4rem 0.6rem 0.4rem 0; border-bottom: 1px solid #eee; }
+table.laws thead th { border-bottom: 1px solid #999; font-weight: bold; }
+table.laws .eq { white-space: nowrap; }
+table.laws math { font-size: 1rem; }

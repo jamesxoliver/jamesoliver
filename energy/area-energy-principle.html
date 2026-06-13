@@ -57,22 +57,87 @@ details.branch details.branch { margin-left: 1.25rem; }
 
 /* paper body prose */
 .paper p { margin: 0 0 1rem; }
+
+/* full-text paper elements */
+.paper h2 { font-size: 1.05rem; margin: 1.75rem 0 0.5rem; }
+.paper .scope { color: #555; font-size: 0.9rem; font-style: italic; border-left: 2px solid #ddd; padding-left: 0.9rem; margin: 0 0 1.5rem; }
+.paper .caption { color: #555; font-size: 0.85rem; margin: 0.5rem 0 1.25rem; }
+.paper .kicker { text-align: center; font-weight: bold; margin: 2rem 0 0.5rem; line-height: 1.5; }
+
+/* laws table */
+table.laws { border-collapse: collapse; width: 100%; margin: 1.25rem 0 0.5rem; font-size: 0.92rem; }
+table.laws th, table.laws td { text-align: left; vertical-align: top; padding: 0.4rem 0.6rem 0.4rem 0; border-bottom: 1px solid #eee; }
+table.laws thead th { border-bottom: 1px solid #999; font-weight: bold; }
+table.laws .eq { white-space: nowrap; }
+table.laws math { font-size: 1rem; }
 </style>
 </head>
 <body>
 
-<div class="up"><a href="../">James Oliver</a></div>
+<div class="up"><a href="../">James Oliver</a> / <a href="./">energy</a></div>
 
 <h1>The Area-Energy Principle</h1>
-<p class="tagline">When environmental gradients are fixed and material properties approach their limits, surface area becomes the dominant variable controlling energy exchange. A universal constraint hierarchy with explanatory power across biology, engineering, and architecture.</p>
+<p class="tagline">The rate at which anything exchanges energy with its surroundings is set by three factors: the gradient that drives the exchange, the material that carries it, and the surface across which it passes. The gradient is fixed by the surroundings and the material sits near a physical ceiling, while the surface can grow or shrink across orders of magnitude. The surface is therefore the lever.</p>
 
 <div class="paper">
-<p>Full text coming. For now this page carries the abstract and the canonical citation below.</p>
+
+<p class="scope">This paper presents no new data. The mechanisms described here are established across physics, biology, and the study of natural form. The contribution is integration: making explicit the chain that connects them, so the unified pattern becomes visible and usable.</p>
+
+<h2>The Principle</h2>
+
+<p>The rate at which a system exchanges energy with its surroundings is the product of three quantities: the gradient that drives the exchange, the material property that carries it, and the area of the surface across which it passes. The gradient is fixed by the surroundings and the material sits near a ceiling set by physics, so the surface is the one factor that scales freely, and it is therefore the lever. A system built to exchange spreads its surface wide. A system built to retain draws it in. None of this is chosen. Surface tension pulls a raindrop round and the pull toward light flattens a leaf. The form is the principle made visible.</p>
+
+<h2>Three Cases</h2>
+
+<p>The principle shows in ordinary events. Two identical sailboats differ only in the size of the sail, and the larger sail reaches the far shore first. Two cups of coffee receive the same mass of sugar, one as a cube and one ground fine, and the ground sugar dissolves first. Two swimmers of equal strength and stroke differ only in that one wears fins, and the finned swimmer touches the wall first. In each, the gradient is the same and the material is the same, and only the surface differs. The sail meets more wind, the sugar meets more coffee, the fin meets more water.</p>
+
+<h2>Why the Surface Is the Lever</h2>
+
+<p>Each of the three factors meets a different constraint. The gradient is whatever the surroundings supply: the sun delivers a set power to each patch of ground, wind blows at the speed it blows, a warm room holds the temperature it holds. The material approaches a ceiling: the best conductor of heat is only marginally better than the next, the best collector of light only marginally better, and near the limit physics allows, further refinement returns almost nothing. The surface meets no such ceiling. It can grow by a factor of ten or a thousand before structure or cost intervenes. This is why a large soaring bird carries a broad wing and a small one a narrow wing. The air is given and feather and bone sit near their limits, so lift is bought with area. Anyone who has turned a flat hand against a strong wind has felt the rule directly: the broader the face turned to the air, the harder the air pushes back.</p>
+
+<h2>Form Follows the Surface</h2>
+
+<p>A system reaching to exchange spreads wide. A leaf flattens to the light, a root divides through the soil, a lung folds a large membrane into a small space, a sail and a fin open broad faces to wind and water. A system holding what it has draws in. A seed and a raindrop round toward a sphere, the form that encloses the most volume behind the least surface, and the least surface loses the least.</p>
+
+<p>These relations are long established. The laws of heat, diffusion, drag, and radiation already make the rate of exchange proportional to the surface, set down here in words and in the symbols that compress them.</p>
+
+<table class="laws">
+  <thead><tr><th>Phenomenon</th><th>Relation to surface</th><th>Equation</th></tr></thead>
+  <tbody>
+    <tr><td>Heat conduction</td><td>the heat carried through a layer is proportional to its area</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>k</mi><mi>A</mi><mi>Δ</mi><mi>T</mi><mi>/</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">\dot{Q} = kA\Delta T/L</annotation></semantics></math></td></tr>
+    <tr><td>Diffusion</td><td>the matter carried through a layer is proportional to its area</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>J</mi><mo>=</mo><mi>D</mi><mi>A</mi><mi>Δ</mi><mi>C</mi><mi>/</mi><mi>L</mi></mrow><annotation encoding="application/x-tex">J = DA\Delta C/L</annotation></semantics></math></td></tr>
+    <tr><td>Fluid resistance</td><td>the drag on a body of fixed shape is proportional to the surface it turns to the flow</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>F</mi><mi>d</mi></msub><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><mi>ρ</mi><msup><mi>v</mi><mn>2</mn></msup><msub><mi>C</mi><mi>d</mi></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">F_d = \tfrac{1}{2}\rho v^2 C_d A</annotation></semantics></math></td></tr>
+    <tr><td>Wind capture</td><td>the power drawn from the wind is proportional to the area swept</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><mi>ρ</mi><msup><mi>v</mi><mn>3</mn></msup><msub><mi>C</mi><mi>p</mi></msub><mi>A</mi></mrow><annotation encoding="application/x-tex">P = \tfrac{1}{2}\rho v^3 C_p A</annotation></semantics></math></td></tr>
+    <tr><td>Radiant absorption</td><td>the energy a body absorbs is proportional to the area it faces the source with</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>α</mi><mi>A</mi><mi>G</mi></mrow><annotation encoding="application/x-tex">\dot{Q} = \alpha A G</annotation></semantics></math></td></tr>
+    <tr><td>Radiant emission</td><td>the energy a body radiates is proportional to its area</td><td class="eq"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>Q</mi><mo accent="true">̇</mo></mover><mo>=</mo><mi>ϵ</mi><mi>σ</mi><mi>A</mi><msup><mi>T</mi><mn>4</mn></msup></mrow><annotation encoding="application/x-tex">\dot{Q} = \epsilon\sigma A T^4</annotation></semantics></math></td></tr>
+  </tbody>
+</table>
+<p class="caption">The established laws of energy exchange, across heat, matter, motion, and radiation, each stated in words and in its symbolic form. In every one the rate is proportional to the surface, with the driving force and the material held fixed: double the surface and the exchange doubles.</p>
+
+<p>In each, the rate is proportional to the surface, which is why a collector grows by spreading out and a lung grows by folding in. Drag belongs in the table only at a fixed shape, since the resistance on a given form rises with its surface. What separates a fish from a sphere is the shape itself, the form of the wake, and the next section takes it up.</p>
+
+<h2>Where It Stops</h2>
+
+<p>One case appears to belong and does not. A submarine takes the shape of a fish, yet that shape is not a matter of surface. A sphere already encloses the most volume behind the least surface, so a long tapered body carries more surface than a sphere of equal size, not less. The streamlined shape reduces the wake, the cost of closing water cleanly behind a moving body, and leaves the surface untouched. Surface governs how much a body exchanges. Shape governs how cleanly it moves through a fluid. The two are independent, and this principle holds only the first. A fish resembles a submarine for a reason that sits just outside the claim, and marking that edge is part of stating it.</p>
+
+<h2>Convergence</h2>
+
+<p>Within its range the principle is reached independently by systems that never met. Lungs, trees, and blood vessels branch in the same manner, each spreading the most surface through the least space. Bejan has gathered such convergences under a single principle he names the constructal law. Selection arrives at the form across geological time and engineering arrives at it across years, and the form is the same because the constraint is the same. The closer a system comes to its limit, the less its shape is free, until solutions that began unlike each other end alike. They approach one optimum from different directions, and the optimum has a single shape.</p>
+
+<h2>Falsification</h2>
+
+<p>The principle can be tested and it can fail. Find a system that had to exchange more, with its gradient fixed and its material spent, that did not enlarge its surface to do so. Find two systems meeting the same demand under the same limits that settled on substantially different forms. Neither has appeared among systems that exchange energy by contact with their surroundings. The single exception is already marked: a body whose problem is motion through a fluid is governed by shape, and falls outside the claim.</p>
+
+<h2>Conclusion</h2>
+
+<p>The three cases return changed. The wide sail gathers more wind while the narrow hull gives the water little to hold, so the boat carries a large surface where exchange helps and a small one where it hurts. The ground sugar meets the coffee across far more boundary, and dissolving happens only at the boundary. The finned foot drives a larger surface against the water with each kick. The same factor sets all three. A tree is a structure for holding the most leaf to the sun on the least wood, and a building is a set of surfaces, some that gather and some that keep. Whether a form reaches out or draws in, its rate of exchange is fixed by the surface it presents.</p>
+
+<p class="kicker">Widen the surface to capture.<br>Narrow the surface to conserve.</p>
+
 </div>
 
 <div class="actions">
-  <a href="https://doi.org/10.31224/5403">Read / Cite (DOI)</a>
+  <a href="https://doi.org/10.31224/5403">Cite (DOI)</a>
 </div>
-
 </body>
 </html>
