@@ -1,6 +1,6 @@
 # The Linear Inversion
 
-**The linear inversion:** Reality is relational before it is numerical, but mathematics commonly treats number as the foundation and relation as something constructed from it. A number produced by measurement is a bounded comparison whose reference is usually suppressed. Once that local representation is mistaken for a reference-free description of reality, the properties of the measuring syntax can be mistaken for properties of what it measures.
+**The linear inversion:** A measured number is a magnitude expressed relative to a reference. Fixed-unit counting suppresses that reference and arranges the resulting values in uniform additive succession. Because this representation was extraordinarily effective at human resolution, it became the inherited foundation for describing reality at every resolution. We came to treat relations as properties constructed from numbers, although the numbers had been extracted from relations in the first place. The result is a reversal of logical order, and some apparent mathematical complexity may be the cost of reconstructing relationships that the primitive representation no longer displays.
 
 ## Ingredients
 
@@ -11,7 +11,7 @@
 - [Invariant](../../definitions/source/invariant.md)
 - [Error](../../definitions/source/error.md)
 
-## The realization
+## Derivation
 
 We did not begin with bad mathematics. We began with a tool fitted almost perfectly to the scale at which we lived.
 
@@ -45,7 +45,7 @@ The count therefore comes after a sequence of prior operations:
 \text{number}.
 \]
 
-The first numbers preserve traces of this construction. Zero records absence within a frame in which presence is possible. One establishes a bounded unit. Two makes comparison explicit. Three non-collinear points produce the first enclosure in a plane. These are not merely four identical acts of adding one. They mark different structural conditions that uniform succession later flattens into equal steps.
+Read structurally, the first numbers preserve traces of this construction. Zero records absence within a frame in which presence is possible. One establishes a bounded unit. Two makes comparison explicit. Three non-collinear points produce the first enclosure in a plane. Uniform succession writes these as identical acts of adding one, although each can also mark a different logical condition.
 
 A number obtained by measurement is likewise not a magnitude by itself. It is a magnitude compared with a reference magnitude of the same kind. If a length \(Q\) is measured using a unit \(u\), its numerical value is
 
