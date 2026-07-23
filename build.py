@@ -2,13 +2,17 @@
 """
 build.py — generates the site's index pages from the folder tree.
 
-The folders and the paper files are the only source of truth.
+The folders and paper files inside this deployable site root are the source of
+truth for public writing. Keep unfinished artifacts outside this directory and
+restore them only after they are finalized.
 You write papers. This script writes everything else:
 
-  - index.html            root index: the nested branch tree, links only
   - index-details.html    alternative root: nested <details> dropdowns
   - all.html              flat list of every paper (ctrl-F / crawlers)
   - <branch>/index.html   one listing page per branch, recursive
+
+The root index is handwritten and intentionally remains plain HTML. This script
+never overwrites it.
 
 Branch display names come from an optional _meta.txt in each branch
 folder (line 1: display name, line 2: tagline shown on that branch's
@@ -171,20 +175,18 @@ def build_branch(path, crumbs):
 def build_root():
     branches, _ = collect(ROOT)
 
-    # 1. root index: the nested branch tree
-    body = f"<h1>{SITE_TITLE}</h1>\n\n"
-    body += branch_tree(ROOT, ROOT) + "\n"
-    body += '\n<p class="up"><a href="all.html">all papers</a></p>\n'
-    write(os.path.join(ROOT, "index.html"), page(SITE_TITLE, body))
+    if not branches:
+        print("no public writing; preserved handwritten index.html")
+        return
 
-    # 2. details variant: nested dropdowns, papers included
+    # 1. details variant: nested dropdowns, papers included
     body = f"<h1>{SITE_TITLE}</h1>\n\n"
     body += details_tree(ROOT, ROOT)
     body += '\n<p class="up"><a href="all.html">all papers</a></p>\n'
     write(os.path.join(ROOT, "index-details.html"),
           page(f"{SITE_TITLE} (details variant)", body))
 
-    # 3. flat /all page
+    # 2. flat /all page
     everything = []
     def walk(path):
         bs, ps = collect(path)
@@ -199,7 +201,7 @@ def build_root():
     body += papers_list(everything, ROOT) + "\n"
     write(os.path.join(ROOT, "all.html"), page(f"All papers — {SITE_TITLE}", body))
 
-    # 4. branch pages, recursive
+    # 3. branch pages, recursive
     for b in branches:
         build_branch(b, [(SITE_TITLE, "../")])
 
