@@ -172,14 +172,14 @@ def build_root():
     walk(ROOT)
     everything.sort(key=lambda p: paper_title(p).lower())
 
-    body = f'<nav><a href="./">{SITE_TITLE}</a></nav>\n\n'
+    body = f'<nav><a href="./">Home</a></nav>\n\n'
     body += "<h1>All papers</h1>\n\n"
     body += papers_list(everything, ROOT) + "\n"
     write(os.path.join(ROOT, "all.html"), page(f"All papers — {SITE_TITLE}", body))
 
     # 2. branch pages, recursive
     for b in branches:
-        build_branch(b, [(SITE_TITLE, "../")])
+        build_branch(b, [("Home", "../")])
 
 if __name__ == "__main__":
     build_root()
