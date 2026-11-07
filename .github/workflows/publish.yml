@@ -1,0 +1,33 @@
+# Anything pushed into papers/ goes live: this rebuilds the pages and the
+# front-page list, commits the result, and asks GitHub Pages to redeploy.
+name: publish
+on:
+  push:
+    branches: [main]
+    paths: ["papers/**", "build.py", "_paper-template.html", "style.css"]
+  workflow_dispatch:
+permissions:
+  contents: write
+  pages: write
+concurrency: publish
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - run: sudo apt-get update -qq && sudo apt-get install -y -qq pandoc
+      - run: python3 build.py
+      - name: Commit rebuilt pages
+        run: |
+          git config user.name "James Oliver"
+          git config user.email "james.oliver@tufts.edu"
+          git add -A
+          git diff --cached --quiet && exit 0
+          git commit -m "Publish: rebuild site"
+          git push
+      - name: Redeploy Pages
+        run: |
+          curl -fsS -X POST -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            https://api.github.com/repos/${{ github.repository }}/pages/builds || true

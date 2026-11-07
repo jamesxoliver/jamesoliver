@@ -33,6 +33,7 @@ import os, re, html
 
 ROOT = os.path.dirname(os.path.abspath(__file__))
 SITE_TITLE = "James Oliver"
+PUBLISH = "papers"   # drop a finished .md or .html here and it goes live
 
 # ---------- helpers ----------
 
@@ -65,7 +66,8 @@ def page(title, body):
 """
 
 def is_branch(path):
-    return os.path.isdir(path) and not os.path.basename(path).startswith((".", "_"))
+    name = os.path.basename(path)
+    return os.path.isdir(path) and not name.startswith((".", "_")) and name != PUBLISH
 
 def is_paper(path):
     name = os.path.basename(path)
@@ -151,9 +153,57 @@ def build_branch(path, crumbs):
         deeper = [(label, "../" + href) for label, href in crumbs] + [(name, "../")]
         build_branch(b, deeper)
 
+# ---------- publish folder ----------
+#
+# papers/ is the publish slot. A finished piece dropped there as .md is
+# converted to a page with _paper-template.html (its first "# " heading is
+# the title). A finished .html is used as is. The front page then lists
+# every piece in papers/, oldest first, by the order it was added to git.
+
+import subprocess
+
+def added_order(path):
+    out = subprocess.run(["git", "log", "--diff-filter=A", "--format=%at", "--", path],
+                         cwd=ROOT, capture_output=True, text=True).stdout.split()
+    return int(out[-1]) if out else 2**62
+
+def convert_md(md):
+    src = read(md)
+    m = re.search(r"^#\s+(.+)$", src, re.M)
+    title = m.group(1).strip() if m else os.path.splitext(os.path.basename(md))[0]
+    if m:
+        src = src[:m.start()] + src[m.end():]
+    out = os.path.splitext(md)[0] + ".html"
+    html_out = subprocess.run(
+        ["pandoc", "-f", "markdown", "-t", "html5", "--mathml",
+         "--template", os.path.join(ROOT, "_paper-template.html"),
+         "-M", f"title={title}"],
+        input=src, capture_output=True, text=True, check=True).stdout
+    write(out, html_out)
+
+def build_publish():
+    folder = os.path.join(ROOT, PUBLISH)
+    if not os.path.isdir(folder):
+        return
+    for name in sorted(os.listdir(folder)):
+        if name.endswith(".md"):
+            convert_md(os.path.join(folder, name))
+    pages = [os.path.join(folder, n) for n in os.listdir(folder) if is_paper(os.path.join(folder, n))]
+    for p in pages:
+        restamp_css(p)
+    pages.sort(key=lambda p: (added_order(os.path.splitext(p)[0] + ".md")
+                              if os.path.exists(os.path.splitext(p)[0] + ".md")
+                              else added_order(p)))
+    if pages:
+        body = papers_list(pages, ROOT) + "\n"
+    else:
+        body = "<p>Nothing published yet.</p>\n"
+    write(os.path.join(ROOT, "index.html"), page(SITE_TITLE, body))
+
 # ---------- root pages ----------
 
 def build_root():
+    build_publish()
     for name in ("index.html", "_paper-template.html"):
         restamp_css(os.path.join(ROOT, name))
     branches, _ = collect(ROOT)
