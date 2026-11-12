@@ -1,12 +1,12 @@
 ---
-claim: Each unit of surface can exchange only so much, so exchanging more takes more surface and exchanging less takes a better barrier.
+claim: To exchange the most energy a thing presents the most surface and to exchange the least it presents the least.
 ---
 
 # The Area-Energy Principle
 
 Two identical sailboats start a race in the same wind. The hulls, the weight and the crews are matched. One carries a sail twice the size of the other and it reaches the far shore first. Nothing about the wind or the cloth differs between them. Only the area turned to the wind does.
 
-Sugar dissolves faster ground than in a cube and a swimmer in fins outpaces one without, for the same reason. The question is why area, among everything a builder or an organism could change, is so often the thing that changes. The answer is that each unit of surface can exchange only so much. The surroundings fix what arrives at the surface, the material can pass on at most all of it and the area alone has no ceiling. To exchange more a system needs more surface. To exchange less it can shrink its surface only as far as a sphere and past that it needs a better barrier.
+Sugar dissolves faster ground than in a cube and a swimmer in fins outpaces one without, for the same reason. The question is why area, among everything a builder or an organism could change, is so often the thing that changes. The answer is that each unit of surface can exchange only so much. The surroundings fix what arrives at the surface, the material can pass on at most all of it and the area alone has no ceiling. So a system that must exchange the most spreads the most surface. A system that must exchange the least presents the least, which is a sphere.
 
 We consider exchanges that happen across a surface: heat, light, dissolved matter and the momentum of a moving fluid. The established laws for these share one form.
 
