@@ -22,113 +22,107 @@ img { max-width: 100%; }
 <p class="claim"><em>The sphere encloses a volume with the least
 surface, a sphere cannot be built from flat parts, and geodesic domes
 approach it without limit.</em></p>
-<p><em>This paper presents no new results. The isoperimetric inequality,
-the rigidity of convex triangulated polyhedra, and the convergence of
-inscribed tessellations are established mathematics. The contribution is
-integration: making explicit the chain that connects them.</em></p>
-<p>A soap bubble forms a sphere. Surface tension shrinks the film until
-it holds the air with the least surface, and the sphere is that
-shape.</p>
-<p>A builder cannot make that shape. Panels are cut flat, carried flat
-and joined at finite precision, and a sphere has no flat part. Every
-structure that can be built therefore has more surface than the sphere
-enclosing the same volume. The question is how close a buildable
-structure can come.</p>
-<p><strong>The problem.</strong> Enclose a given volume with the least
-material.</p>
-<p><strong>P1. Material.</strong> For a thin shell of density
+<p>A soap bubble is a sphere. Its film pulls inward until it holds the
+air with the least surface it can, and among all closed surfaces holding
+a given volume, the sphere has the least area. A builder who wants to
+enclose a room with the least material faces the same problem and cannot
+use the same answer, because a builder works with flat panels and a
+sphere has no flat part. The question is how close a structure built
+from flat parts can come to the sphere.</p>
+<p>We assume that the material in a thin shell is proportional to its
+area. For a shell of density
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
 and thickness
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>,
-mass is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mi>ρ</mi><mspace width="0.167em"></mspace><mi>t</mi><mspace width="0.167em"></mspace><mi>S</mi></mrow><annotation encoding="application/x-tex">M=\rho\,t\,S</annotation></semantics></math>.
-Material is proportional to surface area
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>.</p>
-<p><strong>P2. Buildability.</strong> A structure is built from flat
-parts, joined at finite precision, and it must hold its shape.</p>
-<p><strong>F1. The sphere is the minimum.</strong> Among all closed
-surfaces enclosing volume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>
+the mass is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>=</mo><mi>ρ</mi><mspace width="0.167em"></mspace><mi>t</mi><mspace width="0.167em"></mspace><mi>S</mi></mrow><annotation encoding="application/x-tex">M=\rho\,t\,S</annotation></semantics></math>,
+so enclosing a volume with the least material is the same problem as
+enclosing it with the least surface. We also assume that a buildable
+structure is made of flat parts joined at finite precision, and that it
+must hold its shape with pinned joints.</p>
+<p>The first assumption turns a structural question into a geometric
+one, and the isoperimetric inequality answers it: among all closed
+surfaces enclosing a volume
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-the sphere alone has the least surface area. For radius
+the sphere alone has the least area. For a sphere of radius
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>,</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>V</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mfrac displaystyle="false"><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><mfrac><mi>S</mi><mi>V</mi></mfrac><mo>=</mo><mfrac><mn>3</mn><mi>r</mi></mfrac><mi>.</mi></mrow><annotation encoding="application/x-tex">S_{\mathrm{sphere}}=4\pi r^2,\qquad V_{\mathrm{sphere}}=\tfrac{4}{3}\pi r^3,\qquad \frac{S}{V}=\frac{3}{r}.</annotation></semantics></math></p>
-<p>A dome standing on the ground inherits this by reflection across the
-ground plane, so the hemisphere is the least-area enclosure on a
-plane.</p>
-<p><strong>F2. Triangles are rigid.</strong> A triangle cannot change
-shape without changing the length of an edge. A convex polyhedron whose
-faces are all triangles is first-order rigid.</p>
-<p><strong>F3. Geodesic subdivision converges.</strong> Inscribe a
-regular icosahedron in a sphere. Subdivide each face into
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ν</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\nu^2</annotation></semantics></math>
-triangles and project the new vertices onto the sphere. The result is a
-convex triangulated polyhedron
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
-with</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msub><mi>V</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mspace width="1.0em"></mspace><mrow><mtext mathvariant="normal">as </mtext><mspace width="0.333em"></mspace></mrow><mi>ν</mi><mo>→</mo><mi>∞</mi><mi>.</mi></mrow><annotation encoding="application/x-tex">S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mathrm{sphere}}\quad\text{as }\nu\to\infty.</annotation></semantics></math></p>
-<p><strong>Theorem.</strong> <em>Among flat-faced enclosures of fixed
-volume
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-surface area has infimum
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>,
-which none attains. Geodesic domes are rigid flat-faced enclosures that
-approach it: for any
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>
-there exists a frequency
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">S(\mathcal{P}_\nu)\le S_{\mathrm{sphere}}+\varepsilon</annotation></semantics></math>
-at volume
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.</em></p>
-<p><strong>Proof.</strong></p>
-<ol type="1">
-<li>Least material at fixed volume means least surface area at fixed
-volume. (P1)</li>
-<li>The least surface area is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>,
-attained only by the sphere. (F1)</li>
-<li>A buildable enclosure is a polyhedron, so its surface area exceeds
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>.
-(P2, F1)</li>
-<li>Each
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
-is flat-faced and rigid. Rescaled to enclose exactly
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
-its surface area converges to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>,
-since the scale factor tends to one. (F2, F3)</li>
-</ol>
-<p>Hence for any
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>
-some
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
-satisfies
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>≤</mo><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">S(\mathcal{P}_\nu)\le S_{\mathrm{sphere}}+\varepsilon</annotation></semantics></math>.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
-<p><strong>Corollary.</strong> A hemispherical dome on the ground
-encloses volume
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mn>4</mn><mi>π</mi><msup><mi>r</mi><mn>2</mn></msup><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>V</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>=</mo><mfrac displaystyle="false"><mn>4</mn><mn>3</mn></mfrac><mi>π</mi><msup><mi>r</mi><mn>3</mn></msup><mi>.</mi></mrow><annotation encoding="application/x-tex">S_{\mathrm{sphere}}=4\pi r^2,\qquad V_{\mathrm{sphere}}=\tfrac{4}{3}\pi r^3.</annotation></semantics></math></p>
+<p>The same answer covers a dome standing on the ground. Reflected in
+the ground plane, a dome becomes a closed surface with twice its volume
+and twice its built area, so the hemisphere is the enclosure of least
+area that stands on a plane.</p>
+<p>The second assumption rules the sphere out. A surface made of flat
+parts is a polyhedron, and a polyhedron enclosing
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
-under a surface of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>18</mn><mi>π</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow></msup><mspace width="0.167em"></mspace><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup><mo>≈</mo><mn>3.84</mn><mspace width="0.167em"></mspace><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(18\pi)^{1/3}\,V^{2/3}\approx 3.84\,V^{2/3}</annotation></semantics></math>.
-A cube on the ground encloses the same volume under walls and a roof of
+has more surface than the sphere enclosing
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+The minimum exists, and no buildable structure reaches it. What remains
+to ask is whether buildable structures can come arbitrarily close.</p>
+<p>To hold its shape with pinned joints, a structure needs triangular
+faces. A triangle cannot change shape without changing the length of a
+side, while a face with four or more sides can fold at its corners
+unless its joints resist bending. A convex polyhedron whose faces are
+all triangles is rigid to first order.</p>
+<p><strong>Definition 1.</strong> Inscribe a regular icosahedron in a
+sphere, divide each of its faces into
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>ν</mi><mn>2</mn></msup><annotation encoding="application/x-tex">\nu^2</annotation></semantics></math>
+triangles, and project every new vertex outward onto the sphere. The
+resulting polyhedron
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
+is the <em>geodesic dome of frequency</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>.</p>
+<p>Each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
+is convex and every face is a flat triangle, so each is buildable and
+rigid. As the frequency rises the vertices crowd the sphere, and</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msub><mi>V</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mspace width="2.0em"></mspace><mrow><mo stretchy="true" form="prefix">(</mo><mi>ν</mi><mo>→</mo><mi>∞</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>.</mi></mrow><annotation encoding="application/x-tex">S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mathrm{sphere}}\qquad(\nu\to\infty).</annotation></semantics></math></p>
+<p><strong>Theorem 1.</strong> <em>Among enclosures of volume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+built from flat parts, no surface area is as small as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>,
+and geodesic domes come arbitrarily close to it. For any
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ε</mi><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\varepsilon&gt;0</annotation></semantics></math>
+there is a frequency
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ν</mi><annotation encoding="application/x-tex">\nu</annotation></semantics></math>
+at which the geodesic dome of volume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+has surface area at most
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><mo>+</mo><mi>ε</mi></mrow><annotation encoding="application/x-tex">S_{\mathrm{sphere}}+\varepsilon</annotation></semantics></math>.</em></p>
+<p><em>Proof.</em> Every enclosure built from flat parts is a
+polyhedron, and by the isoperimetric inequality its area exceeds that of
+the sphere of the same volume. For the approach, scale each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
+so that it encloses exactly
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>.
+Since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>V</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>𝒫</mi><mi>ν</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><msub><mi>V</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub></mrow><annotation encoding="application/x-tex">V(\mathcal{P}_\nu)\to V_{\mathrm{sphere}}</annotation></semantics></math>,
+the scale factor tends to one, and the scaled areas tend to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>S</mi><mrow><mi mathvariant="normal">s</mi><mi mathvariant="normal">p</mi><mi mathvariant="normal">h</mi><mi mathvariant="normal">e</mi><mi mathvariant="normal">r</mi><mi mathvariant="normal">e</mi></mrow></msub><annotation encoding="application/x-tex">S_{\mathrm{sphere}}</annotation></semantics></math>.
+Scaling keeps every face flat and triangular, so each scaled dome is
+still buildable and rigid.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><strong>Corollary 1.</strong> <em>A hemispherical dome on the ground
+covers a volume
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>
+with a surface of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>18</mn><mi>π</mi><mo stretchy="true" form="postfix">)</mo></mrow><mrow><mn>1</mn><mi>/</mi><mn>3</mn></mrow></msup><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup><mo>≈</mo><mn>3.84</mn><mspace width="0.167em"></mspace><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">(18\pi)^{1/3}V^{2/3}\approx 3.84\,V^{2/3}</annotation></semantics></math>.
+A cube on the ground covers the same volume with walls and a roof of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mspace width="0.167em"></mspace><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">5\,V^{2/3}</annotation></semantics></math>.
-The dome covers the same space with 23 percent less surface, and a
-geodesic dome approaches that figure as its frequency rises.</p>
-<p><strong>Boundary.</strong> The theorem concerns surface area alone.
-Any sequence of convex triangulated polyhedra converging to the sphere
-approaches the same minimum, so the geodesic family is one route to it.
-The theorem makes no statement about strength under load, the number of
-joints, or the number of distinct panels, each of which grows with
+The dome uses 23 percent less surface, and a geodesic dome approaches
+that figure as its frequency rises.</em></p>
+<p>The theorem concerns surface area and nothing else. Geodesic domes
+are one route to the minimum, since any family of convex triangulated
+polyhedra that converges to the sphere approaches it too. The theorem
+says nothing about strength under load, the number of joints, or the
+number of different panels a builder must cut, all of which grow with
 frequency.</p>
-<p><strong>Falsification.</strong> The theorem would be false if a
-buildable enclosure had less surface than the sphere at the same volume,
-or if the surface areas of a geodesic sequence failed to converge to the
-sphere’s. The second is a finite computation at every frequency. No such
-case is known.</p>
-<p>The soap bubble reaches the sphere because nothing in it is flat. A
-builder’s materials are flat, so the dome approaches the sphere by
-subdivision. Each increase in frequency brings its surface closer to the
-minimum, and the remaining gap can be made smaller than any stated
-tolerance.</p>
+<p>The theorem would be false if a structure built from flat parts
+enclosed a volume with less surface than the sphere, which would
+contradict the isoperimetric inequality, or if the areas of geodesic
+domes failed to converge to the sphere’s, which can be checked by direct
+computation at any frequency.</p>
+<p>The bubble reaches the sphere at once because nothing in it is flat.
+The dome reaches it by subdivision, and the gap can be made smaller than
+any tolerance named in advance.</p>
 </body>
 </html>
