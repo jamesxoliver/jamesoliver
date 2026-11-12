@@ -30,7 +30,7 @@ $$S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mat
 
 **Corollary 1.** *A hemispherical dome on the ground covers a volume $V$ with a surface of $(18\pi)^{1/3}V^{2/3}\approx 3.84\,V^{2/3}$. A cube on the ground covers the same volume with walls and a roof of $5\,V^{2/3}$. The dome uses 23 percent less surface and a geodesic dome approaches that figure as its frequency rises.*
 
-**Corollary 2.** *The surface by which a geodesic dome exceeds the sphere of equal volume falls in inverse proportion to its number of joints. With $N$ joints the excess is close to $0.62/N$ of the sphere's area, so halving the excess doubles the joints.*
+**Corollary 2.** *The surface by which a geodesic sphere exceeds the sphere of equal volume falls in inverse proportion to its number of joints. With $N$ joints the excess is close to $0.62/N$ of the sphere's area, so halving the excess doubles the joints. A dome is half the sphere with half the joints and for it the constant is $0.31$.*
 
 *Proof.* Each flat triangle lies below the sphere by a distance proportional to the square of its edge and the edge shrinks in proportion to $1/\nu$, so the excess area falls as $1/\nu^2$. A geodesic sphere of frequency $\nu$ has $10\nu^2+2$ joints, which grow as $\nu^2$. The product of the excess and the number of joints therefore settles to a constant. Computed from Definition 1, it is 0.775, 0.671, 0.632, 0.623, 0.621 and 0.620 at frequencies 1, 2, 4, 8, 16 and 32. $\square$
 
@@ -38,7 +38,7 @@ Corollary 2 sets a price on closeness and a price leads to a best frequency once
 
 **Corollary 3.** *Under that assumption, the cheapest geodesic dome of radius $r$ has a number of joints proportional to $r$ and struts whose length is proportional to $\sqrt{r}$. At that frequency the spending on joints equals the spending on surface beyond the sphere.*
 
-*Proof.* Let $S_0$ be the area of the sphere and $N$ the number of joints. By Corollary 2 the cost is close to $C(N)=a S_0(1+k/N)+cN$ with $k\approx 0.62$. It is least where $dC/dN=0$, which gives $N^*=\sqrt{k a S_0/c}$. Since $S_0=4\pi r^2$, $N^*$ is proportional to $r$. At that point $cN^*=\sqrt{k a c S_0}=a S_0 k/N^*$, so the two spends are equal. The joints number about $10\nu^2$, so the frequency grows as $\sqrt{r}$ and the struts, whose length is close to $r/\nu$, grow as $\sqrt{r}$. $\square$
+*Proof.* Let $S_0$ be the area of the sphere and $N$ the number of joints. By Corollary 2 the cost is close to $C(N)=a S_0(1+k/N)+cN$ where $k$ is the constant of Corollary 2. It is least where $dC/dN=0$, which gives $N^*=\sqrt{k a S_0/c}$. Since $S_0=4\pi r^2$, $N^*$ is proportional to $r$. At that point $cN^*=\sqrt{k a c S_0}=a S_0 k/N^*$, so the two spends are equal. The joints number about $10\nu^2$, so the frequency grows as $\sqrt{r}$ and the struts, whose length is close to $r/\nu$, grow as $\sqrt{r}$. $\square$
 
 A dome four times as wide is cheapest with struts twice as long and with four times as many joints.
 
