@@ -12,41 +12,31 @@ They are linked because both measure the motion of the molecules. In a thin gas,
 pressure = motion × number per volume<br>
 pressure = temperature × number per volume</p>
 
-The third line follows from the first two and it is the ideal gas law. Seen this way every relation among pressure, temperature and number is plain. The work is to show the first two lines. Nothing here is new. Kinetic theory has held all of it since the nineteenth century. This piece supersedes *The Ideal Gas Tautology* and corrects its claim that the law is true by definition.
+The third line follows from the first two and it is the ideal gas law. The work is to show the first two.
 
-We assume a gas is $N$ point particles of mass $m$ that do not interact, spread uniformly through a rigid container of volume $V$. We assume the gas is at rest as a whole, unchanging in time and moving with no preferred direction. We assume a particle striking a wall rebounds with the component of its velocity normal to the wall reversed.
+We assume a gas is $N$ point particles of mass $m$ that do not interact, spread uniformly through a volume $V$ and moving with no preferred direction. We write $n = N/V$ for the number per volume.
 
-**Definition 1.** The *motion* $w$ is the average energy of a particle's movement as a whole, $w = \tfrac{1}{2}m\langle v^2\rangle$. Rotation and vibration within a molecule are not part of it.
-
-**Definition 2.** The *number per volume* is $n = N/V$.
-
-**Definition 3.** The *pressure* $P$ is the momentum the particles deliver to a wall per unit time per unit area.
+**Definition 1.** The *motion* $w$ is the average energy of a particle's movement, $w = \tfrac{1}{2}m\langle v^2\rangle$.
 
 **Theorem 1.** *Pressure is two-thirds of the motion times the number per volume, $P = \tfrac{2}{3}\,n\,w$.*
 
-*Proof.* Consider one wall. A particle approaching it with velocity component $v_x$ rebounds and delivers momentum $2mv_x$. Half the particles are moving toward the wall and those within a distance $v_x t$ reach it within a time $t$, so the momentum delivered per unit time per unit area is $P = n\,m\langle v_x^2\rangle$. With no preferred direction $\langle v_x^2\rangle = \tfrac{1}{3}\langle v^2\rangle$. Hence $P = \tfrac{1}{3}\,n\,m\langle v^2\rangle = \tfrac{2}{3}\,n\,w$. $\square$
+*Proof.* Pressure is the momentum delivered to a wall per unit time per unit area. A particle approaching the wall with velocity component $v_x$ rebounds and delivers $2mv_x$. Half the particles are moving toward the wall and those within a distance $v_x t$ reach it within a time $t$, so $P = n\,m\langle v_x^2\rangle$. With no preferred direction $\langle v_x^2\rangle = \tfrac{1}{3}\langle v^2\rangle$. Hence $P = \tfrac{1}{3}\,n\,m\langle v^2\rangle = \tfrac{2}{3}\,n\,w$. $\square$
 
-**Corollary 1.** *The speed of the molecules follows from the pressure and the density $\rho = n\,m$ alone: $\langle v^2\rangle = 3P/\rho$.*
-
-Air at sea level has a pressure near 101 kilopascals and a density near 1.2 kilograms per cubic meter, which gives a speed near 500 meters per second. A barometer and a scale measure how fast the molecules move.
-
-Temperature $T$ is absolute temperature, which is defined without reference to molecules. We assume the gas is in classical thermal equilibrium, where statistical mechanics gives each of the three directions of a particle's movement an average energy of $\tfrac{1}{2}k_B T$.
+We assume the gas is in classical thermal equilibrium at absolute temperature $T$, where statistical mechanics gives each of the three directions of a particle's movement an average energy of $\tfrac{1}{2}k_B T$.
 
 **Theorem 2.** *Temperature is two-thirds of the motion, $k_B T = \tfrac{2}{3}\,w$.*
 
 *Proof.* Three directions each carry $\tfrac{1}{2}k_B T$, so $w = \tfrac{3}{2}k_B T$. $\square$
 
-Putting one theorem into the other gives $P = n\,k_B T$, which is the ideal gas law $PV = N k_B T$.
+Putting one theorem into the other gives $P = n\,k_B T$, which is the ideal gas law.
 
-**Corollary 2.** *Every relation among pressure, temperature, number and volume can be read off $P = n\,k_B T$.*
+**Corollary 1.** *Every relation among pressure, temperature and number can be read off $P = n\,k_B T$.*
 
-Add molecules at a fixed temperature and the pressure rises, which is what pumping a tire does. Warm the gas with the number fixed and the pressure rises. Shrink the volume and the number per volume rises, so the pressure rises, which is Boyle's law. Cool the gas while adding molecules and the pressure goes whichever way the larger change pushes it. The mass of the molecule appears nowhere, so equal volumes of any two thin gases at the same pressure and temperature hold equal numbers of molecules.
+Add molecules at a fixed temperature and the pressure rises. Warm the gas with the number fixed and the pressure rises. Cool the gas while adding molecules and the pressure goes whichever way the larger change pushes it.
 
-The two theorems fail separately. Slow electrons packed densely keep moving as temperature approaches zero, so Theorem 1 holds while Theorem 2 fails. Molecules that attract and repel keep Theorem 2 while their forces add to the pressure, so Theorem 1 fails. The second case shows the law is not true by definition. Define temperature as the motion and an interacting gas still departs from $PV = N k_B T$.
+The result stops where the assumptions do. Molecules that attract and repel add to the pressure, so a dense gas departs from the law. It would be false if a real gas at equilibrium did not approach $P = n\,k_B T$ as its density fell.
 
-The claim about the world is that real gases approach these conditions as their density falls, so that measured values of $PV/(N k_B T)$ approach one. A real gas at equilibrium whose ratio did not approach one as its density fell would break it.
-
-The balloon in the cold lost no air. Its molecules slowed, their push on the skin fell and the balloon shrank until the push balanced again.
+The balloon in the cold lost no air. Its molecules slowed and their push on the skin fell.
 
 <figure id="gas-figure">
 <canvas style="width:100%;aspect-ratio:3/2;box-sizing:border-box;border:1px solid currentColor" aria-label="Point particles bouncing in a box"></canvas>
