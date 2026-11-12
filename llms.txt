@@ -1,0 +1,7 @@
+# James Oliver
+
+> Papers by James Oliver. Each piece is listed with its one-sentence claim. Links point to the markdown source, with equations in LaTeX.
+
+## Papers
+
+- [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts, and geodesic domes approach it without limit.

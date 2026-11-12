@@ -92,7 +92,7 @@ def paper_title(path):
 def paper_claim(path):
     """The one-sentence claim a paper page carries under its title, if any."""
     m = re.search(r'<p class="claim">(.*?)</p>', read(path), re.S)
-    return re.sub(r"<.*?>", "", m.group(1)).strip() if m else ""
+    return " ".join(re.sub(r"<.*?>", "", m.group(1)).split()) if m else ""
 
 def restamp_css(path):
     src = read(path)
@@ -184,6 +184,50 @@ def added_order(path):
                          cwd=ROOT, capture_output=True, text=True).stdout.split()
     return int(out[-1]) if out else 2**62
 
+def front_matter_claim(src):
+    """The claim: line of a piece's opening front-matter block, as plain text."""
+    block = re.match(r"---\n(.*?)\n---\n", src, re.S)
+    m = re.search(r"^claim:\s*(.+)$", block.group(1), re.M) if block else None
+    return m.group(1).strip().strip("\"'") if m else ""
+
+def site_url():
+    cname = os.path.join(ROOT, "CNAME")
+    host = read(cname).strip() if os.path.exists(cname) else ""
+    return f"https://{host}" if host else ""
+
+# ---------- files for agents and crawlers ----------
+#
+# llms.txt   plain-text index for AI models: title, claim and a link to the
+#            markdown source of every piece
+# sitemap.xml, robots.txt   every page listed, all crawlers welcome
+#
+# All three are rewritten on every build, so a new piece needs no extra step.
+
+def build_agent_files(pages):
+    base = site_url()
+    if not base:
+        return
+    lines = [f"# {SITE_TITLE}", "",
+             "> Papers by James Oliver. Each piece is listed with its one-sentence claim. "
+             "Links point to the markdown source, with equations in LaTeX.", "",
+             "## Papers", ""]
+    urls = [base + "/"]
+    for p in pages:
+        rel = os.path.relpath(p, ROOT).replace(os.sep, "/")
+        md = os.path.splitext(p)[0] + ".md"
+        link = os.path.splitext(rel)[0] + ".md" if os.path.exists(md) else rel
+        claim = paper_claim(p)
+        lines.append(f"- [{paper_title(p)}]({base}/{link})" + (f": {claim}" if claim else ""))
+        urls.append(f"{base}/{rel}")
+    write(os.path.join(ROOT, "llms.txt"), "\n".join(lines) + "\n")
+    sm = ['<?xml version="1.0" encoding="UTF-8"?>',
+          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    sm += [f"  <url><loc>{html.escape(u)}</loc></url>" for u in urls]
+    sm.append("</urlset>")
+    write(os.path.join(ROOT, "sitemap.xml"), "\n".join(sm) + "\n")
+    write(os.path.join(ROOT, "robots.txt"),
+          f"User-agent: *\nAllow: /\n\nSitemap: {base}/sitemap.xml\n")
+
 def convert_md(md):
     src = read(md)
     m = re.search(r"^#\s+(.+)$", src, re.M)
@@ -191,10 +235,14 @@ def convert_md(md):
     if m:
         src = src[:m.start()] + src[m.end():]
     out = os.path.splitext(md)[0] + ".html"
+    args = ["-V", f"md={os.path.basename(md)}"]
+    claim = front_matter_claim(src)
+    if claim:
+        args += ["-V", f"description={html.escape(claim, quote=True)}"]
     html_out = subprocess.run(
         ["pandoc", "-f", "markdown", "-t", "html5", "--mathml",
          "--template", os.path.join(ROOT, "_paper-template.html"),
-         "-M", f"title={title}"],
+         "-M", f"title={title}"] + args,
         input=src, capture_output=True, text=True, check=True).stdout
     write(out, html_out)
 
@@ -216,6 +264,7 @@ def build_publish():
     else:
         body = "<p>Nothing published yet.</p>\n"
     write(os.path.join(ROOT, "index.html"), page(SITE_TITLE, body))
+    build_agent_files(pages)
 
 # ---------- root pages ----------
 

@@ -4,6 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>$title$</title>
+$if(description)$
+<meta name="description" content="$description$">
+$endif$
+$if(md)$
+<link rel="alternate" type="text/markdown" href="$md$">
+$endif$
 <style>
 body { max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.5; }
 :root { color-scheme: light dark; }
