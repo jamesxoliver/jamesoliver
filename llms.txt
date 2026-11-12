@@ -7,3 +7,4 @@
 - [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts and geodesic domes approach it without limit.
 - [The Area-Energy Principle](https://jamesoliver.xyz/papers/area-energy-principle.md): To exchange the most energy a thing presents the most surface and to exchange the least it presents the least.
 - [The Ideal Gas Law](https://jamesoliver.xyz/papers/ideal-gas-law.md): In a thin gas temperature is the motion of the molecules and pressure is that motion times their number in each unit of volume, so pressure is temperature times number.
+- [Moving Mass Over Land](https://jamesoliver.xyz/papers/moving-mass-over-land.md): To move mass over land with the least energy roll it on hard wheels over hard rails in one long line and the energy for each tonne falls toward the rolling loss of the wheel.
