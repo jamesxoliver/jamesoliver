@@ -20,7 +20,7 @@ To hold its shape with pinned joints, a structure needs triangular faces. A tria
 
 **Definition 1.** Inscribe a regular icosahedron in a sphere, divide each of its faces into $\nu^2$ triangles and project every new vertex outward onto the sphere. The resulting polyhedron $\mathcal{P}_\nu$ is the *geodesic dome of frequency* $\nu$.
 
-Each $\mathcal{P}_\nu$ is convex and every face is a flat triangle, so each is buildable and rigid. As the frequency rises the vertices crowd the sphere, and
+Each $\mathcal{P}_\nu$ is convex and every face is a flat triangle, so each is buildable and rigid. As the frequency rises the vertices crowd the sphere and
 
 $$S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mathrm{sphere}}\qquad(\nu\to\infty).$$
 
