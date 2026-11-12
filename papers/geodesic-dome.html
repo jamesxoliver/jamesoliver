@@ -28,7 +28,9 @@ a given volume, the sphere has the least area. A builder who wants to
 enclose a room with the least material faces the same problem and cannot
 use the same answer, because a builder works with flat panels and a
 sphere has no flat part. The question is how close a structure built
-from flat parts can come to the sphere.</p>
+from flat parts can come to the sphere. It can come as close as we like.
+Each step closer costs more joints, so the right dome is the one at
+which the next joint would save less than it costs.</p>
 <p>We assume that the material in a thin shell is proportional to its
 area. For a shell of density
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
@@ -194,8 +196,7 @@ about cost and it would fail if domes built to minimize cost showed
 strut length growing in proportion to radius, which a survey of built
 domes can check.</p>
 <p>The bubble reaches the sphere at once because nothing in it is flat.
-The dome reaches it by subdivision and the gap can be made smaller than
-any tolerance named in advance.</p>
+The dome reaches it by subdivision and pays for each step in joints.</p>
 <figure id="dome-figure">
 <canvas style="width:100%;aspect-ratio:1/1;touch-action:none;cursor:grab" aria-label="Geodesic dome of the chosen frequency">
 </canvas>
