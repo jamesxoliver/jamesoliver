@@ -4,4 +4,4 @@
 
 ## Papers
 
-- [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts, and geodesic domes approach it without limit.
+- [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts and geodesic domes approach it without limit.
