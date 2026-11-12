@@ -2,7 +2,7 @@
 claim: The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts, and geodesic domes approach it without limit.
 ---
 
-# The Asymptotic Optimality of Geodesic Domes
+# The Buildable Sphere
 
 *This paper presents no new results. The isoperimetric inequality, the rigidity of convex triangulated polyhedra, and the convergence of inscribed tessellations are established mathematics. The contribution is integration: making explicit the chain that connects them, so that the optimality of the geodesic dome follows as a theorem rather than a reputation.*
 
