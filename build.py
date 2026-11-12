@@ -184,6 +184,25 @@ def added_order(path):
                          cwd=ROOT, capture_output=True, text=True).stdout.split()
     return int(out[-1]) if out else 2**62
 
+import hashlib
+
+def stamp_scripts(page_path):
+    """Add a content hash to each local script address, so a changed script
+    is fetched fresh instead of served from a cache under its old address."""
+    src = read(page_path)
+    folder = os.path.dirname(page_path)
+    def fix(m):
+        name = m.group(1).split("?")[0]
+        f = os.path.join(folder, name)
+        if "//" in name or not os.path.exists(f):
+            return m.group(0)
+        with open(f, "rb") as fh:
+            v = hashlib.sha1(fh.read()).hexdigest()[:8]
+        return f'<script src="{name}?v={v}">'
+    new = re.sub(r'<script src="([^"]+)">', fix, src)
+    if new != src:
+        write(page_path, new)
+
 def front_matter_claim(src):
     """The claim: line of a piece's opening front-matter block, as plain text."""
     block = re.match(r"---\n(.*?)\n---\n", src, re.S)
@@ -256,6 +275,7 @@ def build_publish():
     pages = [os.path.join(folder, n) for n in os.listdir(folder) if is_paper(os.path.join(folder, n))]
     for p in pages:
         restamp_css(p)
+        stamp_scripts(p)
     pages.sort(key=lambda p: (added_order(os.path.splitext(p)[0] + ".md")
                               if os.path.exists(os.path.splitext(p)[0] + ".md")
                               else added_order(p)))
