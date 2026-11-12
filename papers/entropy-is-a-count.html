@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Entropy Is a Count</title>
+<meta name="description" content="Entropy is the count of the arrangements that fit a description and a shuffled system is found where the count is largest.">
+<link rel="alternate" type="text/markdown" href="entropy-is-a-count.md">
+<style>
+body { max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.5; }
+:root { color-scheme: light dark; }
+table { border-collapse: collapse; }
+td, th { padding: 0.3rem 0.6rem 0.3rem 0; border-bottom: 1px solid #8884; }
+pre, math[display="block"] { overflow-x: auto; }
+img { max-width: 100%; }
+.notes { text-transform: lowercase; }
+</style>
+</head>
+<body>
+<nav><a href="../">Home</a></nav>
+<h1>Entropy Is a Count</h1>
+<p class="claim"><em>Entropy is the count of the arrangements that fit a
+description and a shuffled system is found where the count is
+largest.</em></p>
+<p>A new deck of cards comes in suits, ace to king. One shuffle and the
+order is gone and no number of further shuffles brings it back. Entropy
+is said to measure this as growing disorder. The question is what it
+measures.</p>
+<p>It counts. Entropy is the number of arrangements that fit a
+description, written as a logarithm. The order of the new deck is one
+arrangement out of all that fifty-two cards can take and so is every
+other exact order, each as likely as the next. What differs is the
+description. “In suits, ace to king” fits one arrangement and “in any
+order” fits them all. A shuffle lands where the arrangements are and
+almost all of them fit no description we would call ordered. Disorder is
+a name for the larger count.</p>
+<p>We assume a deck of distinct cards and a fair shuffle, after which
+every arrangement is equally likely. For a physical body the matching
+assumption is that an isolated body at rest is equally likely to be
+found in each arrangement of its parts that has its energy.</p>
+<p><strong>Definition 1.</strong> An <em>arrangement</em> is a complete
+account of where every part is.</p>
+<p><strong>Definition 2.</strong> A <em>description</em> is any
+statement that some arrangements fit and others do not. Its
+<em>count</em>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+is the number that fit.</p>
+<p><strong>Definition 3.</strong> The <em>entropy</em> of a description
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>S</mi><mo>=</mo><mi>k</mi><mo>ln</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">S = k \ln \Omega</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+is a fixed constant.</p>
+<p><strong>Theorem 1.</strong> <em>After a fair shuffle the chance that
+the deck fits a description
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
+is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>Ω</mi><mi>A</mi></msub><mi>/</mi><mi>Ω</mi></mrow><annotation encoding="application/x-tex">\Omega_A/\Omega</annotation></semantics></math>,
+which is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>e</mi><mrow><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>S</mi><mi>A</mi></msub><mo>−</mo><mi>S</mi><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>k</mi></mrow></msup><annotation encoding="application/x-tex">e^{(S_A - S)/k}</annotation></semantics></math>,
+where
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>Ω</mi><annotation encoding="application/x-tex">\Omega</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+are the count and the entropy of “in any order.”</em></p>
+<p><em>Proof.</em> Every arrangement is equally likely, so the chance of
+a description is the share of arrangements that fit it. The second form
+follows from Definition 3.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p><strong>Corollary 1.</strong> <em>Every exact order has the same
+chance and the same entropy, which is zero.</em></p>
+<p>An exact order is a description that one arrangement fits. For
+fifty-two cards the count of all arrangements is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>52</mn><mi>!</mi><mo>≈</mo><mn>8</mn><mo>×</mo><msup><mn>10</mn><mn>67</mn></msup></mrow><annotation encoding="application/x-tex">52! \approx 8 \times 10^{67}</annotation></semantics></math>,
+so the chance of the order of a new deck is about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mrow><mo>−</mo><mn>68</mn></mrow></msup><annotation encoding="application/x-tex">10^{-68}</annotation></semantics></math>
+and the chance of any other named order is the same. Order has no place
+in the count.</p>
+<p><strong>Corollary 2.</strong> <em>A shuffle moves a deck from a
+description with a small count to one with a large count and does not
+move it back.</em></p>
+<p>“Sorted into suits” fits
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mi>!</mi><mspace width="0.167em"></mspace><msup><mrow><mo stretchy="true" form="prefix">(</mo><mn>13</mn><mi>!</mi><mo stretchy="true" form="postfix">)</mo></mrow><mn>4</mn></msup><mo>≈</mo><mn>4</mn><mo>×</mo><msup><mn>10</mn><mn>40</mn></msup></mrow><annotation encoding="application/x-tex">4!\,(13!)^4 \approx 4 \times 10^{40}</annotation></semantics></math>
+arrangements, with an entropy of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>93</mn><mspace width="0.167em"></mspace><mi>k</mi></mrow><annotation encoding="application/x-tex">93\,k</annotation></semantics></math>
+against
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>156</mn><mspace width="0.167em"></mspace><mi>k</mi></mrow><annotation encoding="application/x-tex">156\,k</annotation></semantics></math>
+for “in any order.” The chance that a shuffle lands in suits is the
+ratio of the counts, about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>4</mn><mo>×</mo><msup><mn>10</mn><mrow><mo>−</mo><mn>28</mn></mrow></msup></mrow><annotation encoding="application/x-tex">4 \times 10^{-28}</annotation></semantics></math>.
+Nothing forbids it. There are too few such arrangements among too many.
+This is the second law for a deck.</p>
+<p><strong>Corollary 3.</strong> <em>In a system of parts that each take
+one of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>
+states, a description that fixes
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
+of the parts has the chance
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mo>−</mo><mi>S</mi></mrow></msup><annotation encoding="application/x-tex">K^{-S}</annotation></semantics></math>
+whatever the size of the system.</em></p>
+<p>A system of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+such parts has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mi>N</mi></msup><annotation encoding="application/x-tex">K^N</annotation></semantics></math>
+arrangements and the description fits
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mi>N</mi><mo>−</mo><mi>S</mi></mrow></msup><annotation encoding="application/x-tex">K^{N-S}</annotation></semantics></math>
+of them. The ratio is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mi>K</mi><mrow><mo>−</mo><mi>S</mi></mrow></msup><annotation encoding="application/x-tex">K^{-S}</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>N</mi><annotation encoding="application/x-tex">N</annotation></semantics></math>
+has dropped out. The arrangements outside the description outnumber
+those inside it by
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>K</mi><mi>S</mi></msup><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">K^S - 1</annotation></semantics></math>
+to one, so each further part fixed multiplies the odds against it by
+about
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>K</mi><annotation encoding="application/x-tex">K</annotation></semantics></math>.</p>
+<p><strong>Corollary 4.</strong> <em>The count predicts what is
+measured, including where the ordered state has the higher
+entropy.</em></p>
+<p>The rules of bonding in ice leave each molecule about three halves
+ways to face. The count gives ice an entropy of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>ln</mo><mfrac displaystyle="false"><mn>3</mn><mn>2</mn></mfrac></mrow><annotation encoding="application/x-tex">k \ln \tfrac{3}{2}</annotation></semantics></math>
+for each molecule that remains at the lowest temperatures, which is 3.4
+joules for each mole and kelvin. That is what is measured. Hard spheres
+crowded past about half the volume of their container settle into a
+regular crystal. The regular packing leaves each sphere more room to
+move than the jumbled one, so more arrangements fit it and its entropy
+is the higher of the two.</p>
+<p>The count belongs to a description and changes with it. For a
+physical body the description is fixed by what is held fixed, its
+energy, its volume and the number of its parts, which is why its entropy
+is a definite quantity. The result would be false if an isolated body at
+rest were found in its arrangements with unequal frequency or if a
+measured entropy departed from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>ln</mo><mi>Ω</mi></mrow><annotation encoding="application/x-tex">k \ln \Omega</annotation></semantics></math>.</p>
+<p>The order of the new deck was one arrangement in
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>52</mn><mi>!</mi></mrow><annotation encoding="application/x-tex">52!</annotation></semantics></math>
+and so was the order that replaced it.</p>
+<figure id="deck-figure">
+<canvas style="width:100%;aspect-ratio:4/1;box-sizing:border-box;border:1px solid currentColor" aria-label="A small deck of two suits being shuffled">
+</canvas>
+<p>
+<label for="deck-n">Cards in each suit</label>
+<input id="deck-n" type="range" min="1" max="6" step="1" value="3" style="vertical-align:middle">
+</p>
+<p>
+<output for="deck-n" aria-live="off">
+</output>
+</p>
+<figcaption>
+A deck of two suits shuffled again and again. The readout counts how
+often a shuffle lands sorted into suits and sets it beside the ratio of
+the counts from Theorem 1. Each card added to a suit makes the sorted
+deck rarer.
+</figcaption>
+</figure>
+<script src="entropy-is-a-count.js?v=b2c020a6"></script>
+</body>
+</html>
