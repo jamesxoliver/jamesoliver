@@ -5,4 +5,4 @@
 ## Papers
 
 - [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts and geodesic domes approach it without limit.
-- [The Area-Energy Principle](https://jamesoliver.xyz/papers/area-energy-principle.md): Each unit of surface can exchange only so much, so exchanging more takes more surface and exchanging less takes a better barrier.
+- [The Area-Energy Principle](https://jamesoliver.xyz/papers/area-energy-principle.md): To exchange the most energy a thing presents the most surface and to exchange the least it presents the least.
