@@ -117,7 +117,7 @@ def papers_list(papers, rel_to):
     for p in papers:
         href = os.path.relpath(p, rel_to)
         claim = paper_claim(p)
-        claim = f"<br>{claim}" if claim else ""
+        claim = f": {claim.rstrip('.')}" if claim else ""
         items.append(f'  <li><a href="{href}">{html.escape(paper_title(p))}</a>{claim}</li>')
     return '<ul>\n' + "\n".join(items) + "\n</ul>"
 
