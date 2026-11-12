@@ -212,7 +212,7 @@ def build_publish():
                               if os.path.exists(os.path.splitext(p)[0] + ".md")
                               else added_order(p)))
     if pages:
-        body = papers_list(pages, ROOT) + "\n"
+        body = papers_list(pages, ROOT).replace("<ul>", '<ul class="notes">', 1) + "\n"
     else:
         body = "<p>Nothing published yet.</p>\n"
     write(os.path.join(ROOT, "index.html"), page(SITE_TITLE, body))
