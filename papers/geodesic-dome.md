@@ -4,7 +4,7 @@ claim: The sphere encloses a volume with the least surface, a sphere cannot be b
 
 # The Buildable Sphere
 
-A soap bubble is a sphere. Its film pulls inward until it holds the air with the least surface it can and among all closed surfaces holding a given volume, the sphere has the least area. A builder who wants to enclose a room with the least material faces the same problem and cannot use the same answer, because a builder works with flat panels and a sphere has no flat part. The question is how close a structure built from flat parts can come to the sphere.
+A soap bubble is a sphere. Its film pulls inward until it holds the air with the least surface it can and among all closed surfaces holding a given volume, the sphere has the least area. A builder who wants to enclose a room with the least material faces the same problem and cannot use the same answer, because a builder works with flat panels and a sphere has no flat part. The question is how close a structure built from flat parts can come to the sphere. It can come as close as we like. Each step closer costs more joints, so the right dome is the one at which the next joint would save less than it costs.
 
 We assume that the material in a thin shell is proportional to its area. For a shell of density $\rho$ and thickness $t$ the mass is $M=\rho\,t\,S$, so enclosing a volume with the least material is the same problem as enclosing it with the least surface. We also assume that a buildable structure is made of flat parts joined at finite precision and that it must hold its shape with pinned joints.
 
@@ -46,7 +46,7 @@ The theorem concerns surface area and nothing else. Geodesic domes are one route
 
 The theorem would be false if a structure built from flat parts enclosed a volume with less surface than the sphere, which would contradict the isoperimetric inequality, or if the areas of geodesic domes failed to converge to the sphere's, which can be checked by direct computation at any frequency. Corollary 3 rests on its added assumption about cost and it would fail if domes built to minimize cost showed strut length growing in proportion to radius, which a survey of built domes can check.
 
-The bubble reaches the sphere at once because nothing in it is flat. The dome reaches it by subdivision and the gap can be made smaller than any tolerance named in advance.
+The bubble reaches the sphere at once because nothing in it is flat. The dome reaches it by subdivision and pays for each step in joints.
 
 <figure id="dome-figure">
 <canvas style="width:100%;aspect-ratio:1/1;touch-action:none;cursor:grab" aria-label="Geodesic dome of the chosen frequency"></canvas>
