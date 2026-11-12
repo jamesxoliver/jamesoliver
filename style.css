@@ -2,3 +2,5 @@ body { max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1
 :root { color-scheme: light dark; }
 table { border-collapse: collapse; }
 td, th { padding: 0.3rem 0.6rem 0.3rem 0; border-bottom: 1px solid #8884; }
+pre, math[display="block"] { overflow-x: auto; }
+img { max-width: 100%; }

@@ -89,6 +89,11 @@ def paper_title(path):
     h1 = re.search(r"<h1>(.*?)</h1>", src, re.S)
     return re.sub(r"<.*?>", "", h1.group(1)).strip() if h1 else os.path.basename(path)
 
+def paper_claim(path):
+    """The one-sentence claim a paper page carries under its title, if any."""
+    m = re.search(r'<p class="claim">(.*?)</p>', read(path), re.S)
+    return re.sub(r"<.*?>", "", m.group(1)).strip() if m else ""
+
 def restamp_css(path):
     src = read(path)
     new = re.sub(r"<style>.*?</style>", lambda m: STYLE_BLOCK, src, count=1, flags=re.S)
@@ -111,7 +116,9 @@ def papers_list(papers, rel_to):
     items = []
     for p in papers:
         href = os.path.relpath(p, rel_to)
-        items.append(f'  <li><a href="{href}">{html.escape(paper_title(p))}</a></li>')
+        claim = paper_claim(p)
+        claim = f"<br>{claim}" if claim else ""
+        items.append(f'  <li><a href="{href}">{html.escape(paper_title(p))}</a>{claim}</li>')
     return '<ul>\n' + "\n".join(items) + "\n</ul>"
 
 def branch_tree(path, rel_to):
@@ -159,6 +166,16 @@ def build_branch(path, crumbs):
 # converted to a page with _paper-template.html (its first "# " heading is
 # the title). A finished .html is used as is. The front page then lists
 # every piece in papers/, oldest first, by the order it was added to git.
+#
+# A .md piece may open with a front-matter block. All three keys are optional:
+#
+#   ---
+#   claim: The one-sentence claim, shown under the title and on the front page.
+#   doi: 10.5281/zenodo.0000000
+#   pdf: https://zenodo.org/records/0000000/files/paper.pdf
+#   ---
+#
+# Equations written as $...$ or $$...$$ are rendered as MathML, with no script.
 
 import subprocess
 
