@@ -63,12 +63,12 @@
   }
   function report() {
     var e = fromEnergy(), t = e * W * H / parts.length;
-    var tail = "energy per unit of area: " + e.toFixed(1) + " · temperature, energy per particle: " + t.toFixed(3);
+    var tail = "crowding times motion: " + e.toFixed(1) + " · thermometer, the motion alone: " + t.toFixed(3);
     if (still) { out.textContent = tail + " (motion is switched off in this browser, so impacts are not counted)"; return; }
     var m = fromImpacts();
     out.textContent = elapsed < 1
       ? "counting impacts"
-      : "pressure counted from impacts: " + m.toFixed(1) + " · " + tail;
+      : "gauge, counted from impacts: " + m.toFixed(1) + " · " + tail;
   }
   var sinceReport = 0;
   function tick(now) {
