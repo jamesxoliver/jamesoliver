@@ -37,8 +37,6 @@ finite precision. Here is the gap this paper closes: the shape that
 minimizes material cannot be built, and every shape that can be built
 falls short of the minimum. The question is how close the buildable can
 come.</p>
-<h2 id="material-scales-with-surface-area">Material Scales with Surface
-Area</h2>
 <p>For a thin shell of density
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
 and thickness
@@ -51,8 +49,6 @@ linear function of
 <p>Minimizing material at fixed volume therefore reduces to minimizing
 surface area at fixed volume. The structural problem becomes a geometric
 one, and geometry has already solved it.</p>
-<h2 id="the-sphere-uniquely-minimizes-surface-area">The Sphere Uniquely
-Minimizes Surface Area</h2>
 <p>The isoperimetric inequality states that among all closed surfaces
 enclosing volume
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
@@ -72,8 +68,6 @@ reflection, so the hemisphere is the unique least-area enclosure on a
 plane, and every result below transfers to grounded domes by this
 reflection. The analysis proceeds with the full sphere, and the dome
 inherits it.</p>
-<h2 id="buildable-enclosures-are-piecewise-flat">Buildable Enclosures
-Are Piecewise Flat</h2>
 <p>Construction imposes three constraints. Materials are flat, because
 cutting, transport, and fabrication operate on flat stock. Joints close
 at finite precision, because workers and machines do. The assembled
@@ -88,19 +82,15 @@ by the uniqueness of the sphere. The minimum is real and it is
 unreachable. Buildable forms can only approach it, which converts the
 question from <em>which shape attains the minimum</em> to <em>which
 sequence of shapes converges to it</em>.</p>
-<h2 id="rigidity-forces-triangulation">Rigidity Forces
-Triangulation</h2>
-<p>A triangle cannot change shape without changing the length of an
-edge, and a convex polyhedron whose faces are all triangles inherits
-this stiffness whole: it is first-order rigid. A face with four or more
-sides can hinge, so it holds its shape only if its joints carry bending
-moments, which adds joint complexity while removing no surface area.
-Rigidity at simple pinned connections therefore forces triangular
-faces.</p>
+<p>Any such shape must also hold its form. A triangle cannot change
+shape without changing the length of an edge, and a convex polyhedron
+whose faces are all triangles inherits this stiffness whole: it is
+first-order rigid. A face with four or more sides can hinge, so it holds
+its shape only if its joints carry bending moments, which adds joint
+complexity while removing no surface area. Rigidity at simple pinned
+connections therefore forces triangular faces.</p>
 <p>Convex triangulated polyhedra are flat-faced and rigid. What remains
 is to exhibit a sequence of them that converges to the sphere.</p>
-<h2 id="geodesic-tessellations-converge-to-the-sphere">Geodesic
-Tessellations Converge to the Sphere</h2>
 <p>Take a regular icosahedron inscribed in a sphere of radius
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>.
 Subdivide each face into
@@ -117,8 +107,6 @@ And as the vertices crowd the sphere,</p>
 <p>while every
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>𝒫</mi><mi>ν</mi></msub><annotation encoding="application/x-tex">\mathcal{P}_\nu</annotation></semantics></math>
 along the way remains a buildable object.</p>
-<h2 id="theorem-asymptotic-optimality">Theorem: Asymptotic
-Optimality</h2>
 <p><strong>Theorem.</strong> <em>Among flat-faced enclosures of fixed
 volume
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>V</mi><annotation encoding="application/x-tex">V</annotation></semantics></math>,
@@ -164,14 +152,12 @@ A cube on the ground encloses the same volume under walls and a roof of
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>5</mn><mspace width="0.167em"></mspace><msup><mi>V</mi><mrow><mn>2</mn><mi>/</mi><mn>3</mn></mrow></msup></mrow><annotation encoding="application/x-tex">5\,V^{2/3}</annotation></semantics></math>.
 The dome covers the same space with 23 percent less surface, and a
 geodesic dome approaches that figure as its frequency rises.</p>
-<h2 id="boundary">Boundary</h2>
 <p>The theorem concerns surface area alone. It does not single out the
 geodesic family, since any sequence of convex triangulated polyhedra
 converging to the sphere approaches the same minimum. It makes no
 statement about strength under load, the number of joints, or the number
 of distinct panels a builder must cut, each of which grows with
 frequency.</p>
-<h2 id="falsification">Falsification</h2>
 <p>This conclusion stands exposed at two points, and it holds until
 someone breaks one of them.</p>
 <p>Exhibit a buildable enclosure, fabricable from flat parts at finite
@@ -182,7 +168,6 @@ invitation is safe to extend.</p>
 the sphere’s. This is a finite computation at every frequency, open to
 anyone with the vertex coordinates.</p>
 <p>No such case is known. Find one, and the theorem falls.</p>
-<h2 id="return">Return</h2>
 <p>Return to the soap bubble. It reaches the sphere in an instant
 because nothing in it is flat: surface tension pulls every point at
 once, and the minimum is available to a surface free to curve. A
