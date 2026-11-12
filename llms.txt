@@ -6,4 +6,4 @@
 
 - [The Buildable Sphere](https://jamesoliver.xyz/papers/geodesic-dome.md): The sphere encloses a volume with the least surface, a sphere cannot be built from flat parts and geodesic domes approach it without limit.
 - [The Area-Energy Principle](https://jamesoliver.xyz/papers/area-energy-principle.md): To exchange the most energy a thing presents the most surface and to exchange the least it presents the least.
-- [The Ideal Gas Law](https://jamesoliver.xyz/papers/ideal-gas-law.md): The pressure and the temperature of a thin gas are one molecular motion measured twice, as its energy per unit of volume and as its energy per molecule.
+- [The Ideal Gas Law](https://jamesoliver.xyz/papers/ideal-gas-law.md): In a thin gas a thermometer reads the motion of the molecules and a pressure gauge reads that motion times their crowding, so the gas law is one fact read twice.
