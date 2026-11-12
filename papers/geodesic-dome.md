@@ -30,7 +30,11 @@ $$S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mat
 
 **Corollary 1.** *A hemispherical dome on the ground covers a volume $V$ with a surface of $(18\pi)^{1/3}V^{2/3}\approx 3.84\,V^{2/3}$. A cube on the ground covers the same volume with walls and a roof of $5\,V^{2/3}$. The dome uses 23 percent less surface, and a geodesic dome approaches that figure as its frequency rises.*
 
-The theorem concerns surface area and nothing else. Geodesic domes are one route to the minimum, since any family of convex triangulated polyhedra that converges to the sphere approaches it too. The theorem says nothing about strength under load, the number of joints, or the number of different panels a builder must cut, all of which grow with frequency.
+**Corollary 2.** *The surface by which a geodesic dome exceeds the sphere of equal volume falls in inverse proportion to its number of joints. With $N$ joints the excess is close to $0.62/N$ of the sphere's area, so halving the excess doubles the joints.*
+
+*Proof.* Each flat triangle lies below the sphere by a distance proportional to the square of its edge, and the edge shrinks in proportion to $1/\nu$, so the excess area falls as $1/\nu^2$. A geodesic sphere of frequency $\nu$ has $10\nu^2+2$ joints, which grow as $\nu^2$. The product of the excess and the number of joints therefore settles to a constant. Computed from Definition 1, it is 0.775, 0.671, 0.632, 0.623, 0.621 and 0.620 at frequencies 1, 2, 4, 8, 16 and 32. $\square$
+
+The theorem concerns surface area and nothing else. Geodesic domes are one route to the minimum, since any family of convex triangulated polyhedra that converges to the sphere approaches it too. The theorem says nothing about strength under load or about what a joint or a distinct panel costs to make, and the number of distinct panels grows with frequency as well.
 
 The theorem would be false if a structure built from flat parts enclosed a volume with less surface than the sphere, which would contradict the isoperimetric inequality, or if the areas of geodesic domes failed to converge to the sphere's, which can be checked by direct computation at any frequency.
 
