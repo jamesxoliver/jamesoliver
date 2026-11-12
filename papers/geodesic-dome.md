@@ -35,3 +35,11 @@ The theorem concerns surface area and nothing else. Geodesic domes are one route
 The theorem would be false if a structure built from flat parts enclosed a volume with less surface than the sphere, which would contradict the isoperimetric inequality, or if the areas of geodesic domes failed to converge to the sphere's, which can be checked by direct computation at any frequency.
 
 The bubble reaches the sphere at once because nothing in it is flat. The dome reaches it by subdivision, and the gap can be made smaller than any tolerance named in advance.
+
+<figure id="dome-figure">
+<canvas style="width:100%;aspect-ratio:1/1;touch-action:none;cursor:grab" aria-label="Geodesic dome of the chosen frequency"></canvas>
+<p><label for="dome-frequency">Frequency</label> <input id="dome-frequency" type="range" min="1" max="8" value="3" style="vertical-align:middle"></p>
+<p><output for="dome-frequency" aria-live="polite"></output></p>
+<figcaption>The geodesic sphere of each frequency, computed from Definition 1. The surface figure compares the polyhedron with a sphere of equal volume. Joints, panel types and strut lengths are counted over the whole sphere, and a dome is its upper half. Drag to turn it.</figcaption>
+</figure>
+<script src="geodesic-dome.js"></script>
