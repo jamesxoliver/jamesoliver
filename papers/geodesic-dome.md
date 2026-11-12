@@ -34,9 +34,17 @@ $$S(\mathcal{P}_\nu)\to S_{\mathrm{sphere}},\qquad V(\mathcal{P}_\nu)\to V_{\mat
 
 *Proof.* Each flat triangle lies below the sphere by a distance proportional to the square of its edge, and the edge shrinks in proportion to $1/\nu$, so the excess area falls as $1/\nu^2$. A geodesic sphere of frequency $\nu$ has $10\nu^2+2$ joints, which grow as $\nu^2$. The product of the excess and the number of joints therefore settles to a constant. Computed from Definition 1, it is 0.775, 0.671, 0.632, 0.623, 0.621 and 0.620 at frequencies 1, 2, 4, 8, 16 and 32. $\square$
 
+Corollary 2 sets a price on closeness, and a price leads to a best frequency once costs are named. We add an assumption the theorem has not needed: each joint costs a fixed amount $c$, and panel material costs a fixed amount $a$ per unit area.
+
+**Corollary 3.** *Under that assumption, the cheapest geodesic dome of radius $r$ has a number of joints proportional to $r$ and struts whose length is proportional to $\sqrt{r}$. At that frequency the spending on joints equals the spending on surface beyond the sphere.*
+
+*Proof.* Let $S_0$ be the area of the sphere and $N$ the number of joints. By Corollary 2 the cost is close to $C(N)=a S_0(1+k/N)+cN$ with $k\approx 0.62$. It is least where $dC/dN=0$, which gives $N^*=\sqrt{k a S_0/c}$. Since $S_0=4\pi r^2$, $N^*$ is proportional to $r$. At that point $cN^*=\sqrt{k a c S_0}=a S_0 k/N^*$, so the two spends are equal. The joints number about $10\nu^2$, so the frequency grows as $\sqrt{r}$, and the struts, whose length is close to $r/\nu$, grow as $\sqrt{r}$. $\square$
+
+A dome four times as wide is cheapest with struts twice as long, and with four times as many joints.
+
 The theorem concerns surface area and nothing else. Geodesic domes are one route to the minimum, since any family of convex triangulated polyhedra that converges to the sphere approaches it too. The theorem says nothing about strength under load or about what a joint or a distinct panel costs to make, and the number of distinct panels grows with frequency as well.
 
-The theorem would be false if a structure built from flat parts enclosed a volume with less surface than the sphere, which would contradict the isoperimetric inequality, or if the areas of geodesic domes failed to converge to the sphere's, which can be checked by direct computation at any frequency.
+The theorem would be false if a structure built from flat parts enclosed a volume with less surface than the sphere, which would contradict the isoperimetric inequality, or if the areas of geodesic domes failed to converge to the sphere's, which can be checked by direct computation at any frequency. Corollary 3 rests on its added assumption about cost, and it would fail if domes built to minimize cost showed strut length growing in proportion to radius, which a survey of built domes can check.
 
 The bubble reaches the sphere at once because nothing in it is flat. The dome reaches it by subdivision, and the gap can be made smaller than any tolerance named in advance.
 
