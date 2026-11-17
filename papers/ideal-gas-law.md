@@ -16,10 +16,11 @@ claim: Temperature is the energy each molecule of a thin gas carries and pressur
 #gas-figure .out b { display: block; font-weight: normal; font-variant-numeric: tabular-nums; font-size: 1.35rem; }
 #gas-figure .frac { display: inline-flex; flex-direction: column; align-items: center; font-size: 1rem; line-height: 1.1; }
 #gas-figure .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px; }
+#gas-figure .gap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 #gas-figure .t { color: var(--t); } #gas-figure .p { color: var(--p); } #gas-figure .v { color: var(--v); }
 </style>
 <figure id="gas-figure" style="margin-left:0;margin-right:0">
-<p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w."><span><i>k</i><i class="t">T</i> = ⅔ <i>w</i></span><span><i class="p">P</i> = ⅔ <i>n w</i></span></p>
+<p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w."><span><i>k</i><i class="t">T</i> = ⅔ <i>w</i></span><span class="gap"> and </span><span><i class="p">P</i> = ⅔ <i>n w</i></span></p>
 <canvas role="img" aria-label="Particles bounce in a closed box. Pressure is measured at the walls, where each hit flashes and fills a gauge. Temperature is measured from the particles themselves, as the spread of their speeds."></canvas>
 <div class="row"><label for="gas-speed"><i>w</i></label><input id="gas-speed" type="range" min="0" max="100" step="1" value="50" aria-label="Motion of each particle"></div>
 <div class="row"><label for="gas-count"><i>N</i></label><input id="gas-count" type="range" min="40" max="400" step="10" value="150" aria-label="Number of particles"></div>
@@ -69,7 +70,7 @@ The number per volume appears in Theorem 1 and is absent from Theorem 2. That ab
 
 A wall free to move would also equalize the pressures, which is why the wall in Corollary 2 is fixed. Across it the two measurements part. The gases agree on temperature and disagree on pressure for as long as their numbers per volume differ.
 
-They part in the other direction too. A beam of molecules all moving one way at one speed delivers a push to any surface it strikes, so it has a pressure on that surface. Its energy is not shared among the three directions, so it is not in the equilibrium Theorem 2 assumes and it has no single temperature. The push needs only motion and number. The temperature needs the motion to have settled.
+They part in the other direction too. A beam of molecules all moving one way at one speed pushes on any surface it strikes and the push depends on which way the surface faces. Its energy is not shared among the three directions, so it is not in the equilibrium Theorem 2 assumes and it has no single temperature. The push needs only motion and number. The temperature needs the motion to have settled.
 
 The result stops where the assumptions do. Molecules that take up room add to the push and their attraction takes from it, so a dense gas departs from the law. The arithmetic of the two theorems cannot fail. The claim about the world is the assumption behind Theorem 2 and it would be false if two thin gases on either side of a fixed wall that lets heat through settled to unequal energies of movement per molecule, or if a real gas at equilibrium did not approach $P = n\,k_B T$ as its density fell.
 

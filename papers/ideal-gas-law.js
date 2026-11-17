@@ -38,10 +38,20 @@
     f *= k;
     for (var i = 0; i < parts.length; i++) { parts[i].vx *= k; parts[i].vy *= k; parts[i].vz *= k; }
   }
+  // The paper assumes no preferred direction. Particles that never collide keep whatever
+  // imbalance a finite random sample starts with, so the sample is made exactly even:
+  // the energy of movement along each of the three directions is set equal.
+  function isotropize() {
+    var sx = 0, sy = 0, sz = 0, i;
+    for (i = 0; i < parts.length; i++) { sx += parts[i].vx * parts[i].vx; sy += parts[i].vy * parts[i].vy; sz += parts[i].vz * parts[i].vz; }
+    var m = (sx + sy + sz) / 3, kx = Math.sqrt(m / sx), ky = Math.sqrt(m / sy), kz = Math.sqrt(m / sz);
+    for (i = 0; i < parts.length; i++) { parts[i].vx *= kx; parts[i].vy *= ky; parts[i].vz *= kz; }
+  }
   function setCount() {
     var n = +count.value;
     while (parts.length < n) parts.push(spawn());
     parts.length = n;
+    isotropize();
   }
 
   function step(dt) {
@@ -155,10 +165,13 @@
     ctx.fillText("T", lx, top - 6);
   }
 
+  var accP = 0, accW = 0, accT = 0;
+  function restart() { accP = 0; accW = 0; accT = 0; }
   function report() {
     oT.textContent = ((2 / 3) * Ws / KT0).toFixed(2);
     oP.textContent = (Ps / P0).toFixed(2);
-    oZ.textContent = (Ps * V / (parts.length * (2 / 3) * Ws)).toFixed(2);
+    // the check averages everything measured since the inputs last changed, so it settles toward 1
+    if (accT > 0.5) oZ.textContent = (accP * V / (parts.length * (2 / 3) * accW)).toFixed(2);
   }
 
   var since = 0;
@@ -170,7 +183,9 @@
         for (var i = 0; i < sub; i++) P += step(dt / sub) / sub;
         var k = Math.min(1, dt / 1.2);
         Ps += (P - Ps) * k;
-        Ws += (meanW() - Ws) * k;
+        var wNow = meanW();
+        Ws += (wNow - Ws) * k;
+        accP += P * dt; accW += wNow * dt; accT += dt;
         draw(dt);
         since += dt;
         if (since > 0.25) { report(); since = 0; }
@@ -184,10 +199,10 @@
   function settle() {
     var P = 0, n = 2000, dt = 0.002;
     for (var i = 0; i < n; i++) P += step(dt) / n;
-    hits = []; Ps = P; Ws = meanW(); report(); draw(0);
+    hits = []; Ps = P; Ws = meanW(); accP = P; accW = Ws; accT = 1; report(); draw(0);
   }
-  speed.addEventListener("input", function () { setMotion(); if (still) settle(); });
-  count.addEventListener("input", function () { setCount(); if (still) settle(); });
+  speed.addEventListener("input", function () { setMotion(); restart(); if (still) settle(); });
+  count.addEventListener("input", function () { setCount(); restart(); if (still) settle(); });
   window.addEventListener("resize", function () { draw(0); });
   setCount();
   (function () { var k = Math.sqrt(W0 / meanW()); for (var i = 0; i < parts.length; i++) { parts[i].vx *= k; parts[i].vy *= k; parts[i].vz *= k; } })();
