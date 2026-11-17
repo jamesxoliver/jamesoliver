@@ -22,6 +22,48 @@ img { max-width: 100%; }
 <p class="claim"><em>In a thin gas temperature is the motion of the
 molecules and pressure is that motion times their number in each unit of
 volume, so pressure is temperature times number.</em></p>
+<style>
+#gas-figure { margin: 1.5rem 0 2rem; --t: #d65a1f; --p: #7041c9; --v: #2f62cf; }
+@media (prefers-color-scheme: dark) { #gas-figure { --t: #ff8a4c; --p: #b694ff; --v: #7ea2ff; } }
+#gas-figure canvas { width: 100%; display: block; }
+#gas-figure i { font-family: "STIX Two Text", "Cambria Math", "Times New Roman", serif; }
+#gas-figure .laws { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; font-size: 1.6rem; margin: 0 0 .5rem; }
+#gas-figure .row { display: grid; grid-template-columns: 1.5rem 1fr; gap: .75rem; align-items: center; margin: .4rem 0; font-size: 1.2rem; }
+#gas-figure input[type=range] { width: 100%; margin: 0; }
+#gas-figure .out { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin-top: .9rem; font-size: 1.2rem; }
+#gas-figure .out b { display: block; font-weight: normal; font-variant-numeric: tabular-nums; font-size: 1.35rem; }
+#gas-figure .frac { display: inline-flex; flex-direction: column; align-items: center; font-size: 1rem; line-height: 1.1; }
+#gas-figure .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px; }
+#gas-figure .t { color: var(--t); } #gas-figure .p { color: var(--p); } #gas-figure .v { color: var(--v); }
+</style>
+<figure id="gas-figure" style="margin-left:0;margin-right:0">
+<p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w.">
+<span><i>k</i><i class="t">T</i> = ⅔
+<i>w</i></span><span><i class="p">P</i> = ⅔ <i>n w</i></span>
+</p>
+<canvas role="img" aria-label="Particles bounce in a closed box. Each hit on a wall flashes, and its length is the size of the kick.">
+</canvas>
+<div class="row">
+<label for="gas-speed"><i>w</i></label><input id="gas-speed" type="range" min="0" max="100" step="1" value="50" aria-label="Motion of each particle">
+</div>
+<div class="row">
+<label for="gas-count"><i>N</i></label><input id="gas-count" type="range" min="40" max="400" step="10" value="150" aria-label="Number of particles">
+</div>
+<div class="out" aria-live="off">
+<div>
+<i class="t">T</i><b id="gas-T" class="t">1.00</b>
+</div>
+<div>
+<i class="p">P</i><b id="gas-P" class="p">1.00</b>
+</div>
+<div>
+<span
+class="frac"><span><i class="p">P</i><i class="v">V</i></span><span><i>N
+k</i><i class="t">T</i></span></span><b id="gas-Z">1.00</b>
+</div>
+</div>
+</figure>
+<script src="ideal-gas-law.js?v=0fc9b582"></script>
 <p>A sealed balloon carried from a warm room into the cold shrinks,
 though no air has left it. Pressure and temperature are taught as two
 properties of the air that happen to be linked. The question is why they
@@ -46,10 +88,10 @@ for the number per volume.</p>
 <p><strong>Definition 1.</strong> The <em>motion</em>
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>w</mi><annotation encoding="application/x-tex">w</annotation></semantics></math>
 is the average energy of a particle’s movement,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><mi>m</mi><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">w = \tfrac{1}{2}m\langle v^2\rangle</annotation></semantics></math>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><mi>m</mi><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">w = \tfrac{1}{2}m\langle v^2\rangle</annotation></semantics></math>.</p>
 <p><strong>Theorem 1.</strong> <em>Pressure is two-thirds of the motion
 times the number per volume,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mfrac displaystyle="false"><mn>2</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">P = \tfrac{2}{3}\,n\,w</annotation></semantics></math>.</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">P = \tfrac{2}{3}\,n\,w</annotation></semantics></math>.</em></p>
 <p><em>Proof.</em> Pressure is the momentum delivered to a wall per unit
 time per unit area. A particle approaching the wall with velocity
 component
@@ -64,23 +106,23 @@ reach it within a time
 so
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>n</mi><mspace width="0.167em"></mspace><mi>m</mi><mo stretchy="false" form="prefix">⟨</mo><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">P = n\,m\langle v_x^2\rangle</annotation></semantics></math>.
 With no preferred direction
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><mn>3</mn></mfrac><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle v_x^2\rangle = \tfrac{1}{3}\langle v^2\rangle</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">⟨</mo><msubsup><mi>v</mi><mi>x</mi><mn>2</mn></msubsup><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>3</mn></mfrac></mstyle><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo></mrow><annotation encoding="application/x-tex">\langle v_x^2\rangle = \tfrac{1}{3}\langle v^2\rangle</annotation></semantics></math>.
 Hence
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mfrac displaystyle="false"><mn>1</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>m</mi><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mfrac displaystyle="false"><mn>2</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">P = \tfrac{1}{3}\,n\,m\langle v^2\rangle = \tfrac{2}{3}\,n\,w</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>3</mn></mfrac></mstyle><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>m</mi><mo stretchy="false" form="prefix">⟨</mo><msup><mi>v</mi><mn>2</mn></msup><mo stretchy="false" form="postfix">⟩</mo><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle><mspace width="0.167em"></mspace><mi>n</mi><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">P = \tfrac{1}{3}\,n\,m\langle v^2\rangle = \tfrac{2}{3}\,n\,w</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
 <p>We assume the gas is in classical thermal equilibrium at absolute
 temperature
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>,
 where statistical mechanics gives each of the three directions of a
 particle’s movement an average energy of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">\tfrac{1}{2}k_B T</annotation></semantics></math>.</p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">\tfrac{1}{2}k_B T</annotation></semantics></math>.</p>
 <p><strong>Theorem 2.</strong> <em>Temperature is two-thirds of the
 motion,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi><mo>=</mo><mfrac displaystyle="false"><mn>2</mn><mn>3</mn></mfrac><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">k_B T = \tfrac{2}{3}\,w</annotation></semantics></math>.</em></p>
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>2</mn><mn>3</mn></mfrac></mstyle><mspace width="0.167em"></mspace><mi>w</mi></mrow><annotation encoding="application/x-tex">k_B T = \tfrac{2}{3}\,w</annotation></semantics></math>.</em></p>
 <p><em>Proof.</em> Three directions each carry
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mfrac displaystyle="false"><mn>1</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">\tfrac{1}{2}k_B T</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mstyle displaystyle="false"><mfrac><mn>1</mn><mn>2</mn></mfrac></mstyle><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">\tfrac{1}{2}k_B T</annotation></semantics></math>,
 so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mfrac displaystyle="false"><mn>3</mn><mn>2</mn></mfrac><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">w = \tfrac{3}{2}k_B T</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>w</mi><mo>=</mo><mstyle displaystyle="false"><mfrac><mn>3</mn><mn>2</mn></mfrac></mstyle><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">w = \tfrac{3}{2}k_B T</annotation></semantics></math>.
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
 <p>Putting one theorem into the other gives
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>P</mi><mo>=</mo><mi>n</mi><mspace width="0.167em"></mspace><msub><mi>k</mi><mi>B</mi></msub><mi>T</mi></mrow><annotation encoding="application/x-tex">P = n\,k_B T</annotation></semantics></math>,
@@ -99,28 +141,5 @@ be false if a real gas at equilibrium did not approach
 as its density fell.</p>
 <p>The balloon in the cold lost no air. Its molecules slowed and their
 push on the skin fell.</p>
-<figure id="gas-figure">
-<canvas style="width:100%;aspect-ratio:3/2;box-sizing:border-box;border:1px solid currentColor" aria-label="Point particles bouncing in a box">
-</canvas>
-<p>
-<label for="gas-speed">Motion</label>
-<input id="gas-speed" type="range" min="50" max="200" step="1" value="100" style="vertical-align:middle">
-<label for="gas-count" style="margin-left:1rem">Number</label>
-<input id="gas-count" type="range" min="20" max="400" step="10" value="150" style="vertical-align:middle">
-</p>
-<p>
-<output for="gas-speed gas-count" aria-live="off">
-</output>
-</p>
-<figcaption>
-Point particles that do not interact, drawn in two dimensions, where the
-factor of two-thirds becomes one. The pressure is counted from the
-momentum the particles deliver to the walls and shown beside the motion
-times the number per area. The temperature is the motion alone. The
-first slider moves both. The second moves the pressure and leaves the
-temperature where it was.
-</figcaption>
-</figure>
-<script src="ideal-gas-law.js?v=519d891d"></script>
 </body>
 </html>
