@@ -24,7 +24,7 @@ $$\rho < 1:\quad T \approx \frac{M}{a - r} \qquad\qquad \rho > 1:\quad T \approx
 
 *Below the threshold the lifetime grows in proportion to the margin. Above it the lifetime grows exponentially with the margin. At exactly one it grows as the square of the margin.*
 
-*Proof.* Let $t_k$ be the expected time to go from $k$ errors to $k+1$. From zero errors only an arrival can occur, so $t_0 = 1/a$. From $k \ge 1$ errors the next event is an arrival, which completes the step, or a removal, after which the system must climb from $k-1$ back to $k$ and then on to $k+1$. Averaging over the two gives
+*Proof.* The calculation is the classical one for the time a random walk takes to first reach a level [6]. Let $t_k$ be the expected time to go from $k$ errors to $k+1$. From zero errors only an arrival can occur, so $t_0 = 1/a$. From $k \ge 1$ errors the next event is an arrival, which completes the step, or a removal, after which the system must climb from $k-1$ back to $k$ and then on to $k+1$. Averaging over the two gives
 
 $$t_k = \frac{1}{a} + \rho\, t_{k-1} = \frac{1}{a}\left(1 + \rho + \dots + \rho^{k}\right)$$
 
@@ -34,9 +34,9 @@ Take a system that gains one error a day and fails at twenty. Removing half an e
 
 **Corollary 1.1 (lifespan and half-life).** *Below the threshold a system ages. Above it a system is ageless and still mortal.*
 
-Below the threshold errors pile up at the steady net rate $a - r$, so the error count is a clock. Failure comes near the time $M/(a-r)$, and the chance of failing soon rises as that time approaches. A rising chance of failure with age is what aging is. The system has a lifespan.
+Below the threshold errors pile up at the steady net rate $a - r$, so the error count is a clock. Failure comes near the time $M/(a-r)$, and the chance of failing soon rises as that time approaches. A rising chance of failure with age is what aging is. The system has a lifespan. Reliability theory finds the same for the case with no repair at all: a system with redundant parts that cannot be replaced ages even when its parts do not [7].
 
-Above the threshold correction pulls the system back toward zero errors after every arrival, so the system sits near zero and keeps no record of its age. Failure needs a rare unbroken run of bad luck that carries it from near zero all the way to $M$. Each such attempt starts fresh, so the chance of failure per unit time is constant, and waiting times for rare excursions of this kind are known to follow the exponential law [4]. An old system of this kind is exactly as likely to survive the coming year as a new one. It has a half-life, $t_{1/2} = T \ln 2$, and no lifespan. A radioactive atom persists in the same way.
+Above the threshold correction pulls the system back toward zero errors after every arrival, so the system sits near zero and keeps no record of its age. Failure needs a rare unbroken run of bad luck that carries it from near zero all the way to $M$. Each such attempt starts fresh, so the chance of failure per unit time is constant, and waiting times for rare excursions of this kind are known to follow the exponential law [4]. An old system of this kind is exactly as likely to survive the coming year as a new one. It has a half-life, $t_{1/2} \approx T \ln 2$ for large $M$, and no lifespan. A radioactive atom persists in the same way.
 
 **Corollary 1.2 (the price of persistence).** Suppose a system must last a thousand times longer. Below the threshold its margin must grow a thousandfold, since $T$ is proportional to $M$. Above the threshold, at $\rho = 2$, ten more units of margin suffice, since each unit doubles $T$. In general the margin needed for a lifetime $T$ is
 
@@ -48,7 +48,7 @@ This holds when added margin does not bring added arrivals in proportion. Where 
 
 Theorem 1 takes the two rates as given. Two further results and a remark say when a system can hold its ratio above one.
 
-**Theorem 2 (the corrector must be better than it is bad).** *Let the corrector attempt repairs at rate $s$. Let each attempt remove an error with probability $f$ and create a new one with probability $c$. Then the effective ratio is*
+**Theorem 2 (the corrector must be better than it is bad).** *Let the corrector attempt repairs at rate $s$ while errors are present. Let each attempt remove an error with probability $f$ and create a new one with probability $c$. Then the effective ratio is*
 
 $$\rho_{\text{eff}} = \frac{s f}{a + s c} < \frac{f}{c}$$
 
@@ -68,7 +68,7 @@ So the reference needs a persistence ratio above one in its own right, and the r
 
 The same results read in four materials. A ship at anchor has $r = 0$ and rots in the time $M/a$. A ship with a crew, timber and its builder's lines has a corrector, an energy supply and a reference, and it lasts while the crew replaces planks faster than they rot. A text copied by hand drifts with every copy unless each copy is checked against a count of its letters, which is comparison. A stored message survives on unreliable hardware when its redundant copies are compared and rewritten faster than they flip. A living body replaces most of its parts and so holds most of itself above the threshold, while the parts it cannot replace sit below it and set its lifespan. The line of cells that passes from parent to offspring is kept by selection and has persisted since life began.
 
-**Boundaries.** The theorems assume errors that are countable, of comparable weight and independent, arriving one at a time at steady rates. A single blow that delivers the whole margin at once lies outside the model and adds a constant chance of failure to any system, ageless or aging. Where the corrector itself weakens as errors accumulate, $r$ falls as $n$ rises and a system that begins above the threshold can cross below it. The same happens where errors breed further errors, so that $a$ rises with $n$. Its failure then starts slowly and accelerates. Theorem 1 applies within each stretch where the rates hold steady.
+**Boundaries.** The theorems assume errors that are countable, of comparable weight and independent, arriving one at a time at steady rates. A single blow that delivers the whole margin at once lies outside the model and adds a constant chance of failure to any system, ageless or aging. Where the corrector itself weakens as errors accumulate, $r$ falls as $n$ rises and a system that begins above the threshold can cross below it. The same happens where errors breed further errors, so that $a$ rises with $n$. In either case failure starts slowly and accelerates. Theorem 1 applies within each stretch where the rates hold steady.
 
 **Falsification.** The theorems follow from the definitions. The claim that can fail is that real systems fit them. The framework would be false if a system measured below the threshold outlasted $M/(a-r)$ many times over, if a system held above the threshold at steady rates showed a chance of failure that rose with its age, if a system persisted with a corrector that broke as much as it fixed or if a system persisted with no energy flowing through it.
 
@@ -81,3 +81,5 @@ Nothing lasts by being made of lasting material. Planks rot, ink fades, molecule
 3. Landauer, R. (1961). Irreversibility and heat generation in the computing process. *IBM Journal of Research and Development*, 5(3), 183–191.
 4. Keilson, J. (1979). *Markov Chain Models: Rarity and Exponentiality*. Springer.
 5. Eigen, M. (1971). Selforganization of matter and the evolution of biological macromolecules. *Naturwissenschaften*, 58, 465–523.
+6. Feller, W. (1968). *An Introduction to Probability Theory and Its Applications*, Volume 1 (3rd ed.). Wiley.
+7. Gavrilov, L. A., & Gavrilova, N. S. (2001). The reliability theory of aging and longevity. *Journal of Theoretical Biology*, 213(4), 527–545.
