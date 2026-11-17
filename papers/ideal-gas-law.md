@@ -4,6 +4,33 @@ claim: In a thin gas temperature is the motion of the molecules and pressure is 
 
 # The Ideal Gas Law
 
+<style>
+#gas-figure { margin: 1.5rem 0 2rem; --t: #d65a1f; --p: #7041c9; --v: #2f62cf; }
+@media (prefers-color-scheme: dark) { #gas-figure { --t: #ff8a4c; --p: #b694ff; --v: #7ea2ff; } }
+#gas-figure canvas { width: 100%; display: block; }
+#gas-figure i { font-family: "STIX Two Text", "Cambria Math", "Times New Roman", serif; }
+#gas-figure .laws { display: flex; justify-content: center; gap: 2.5rem; flex-wrap: wrap; font-size: 1.6rem; margin: 0 0 .5rem; }
+#gas-figure .row { display: grid; grid-template-columns: 1.5rem 1fr; gap: .75rem; align-items: center; margin: .4rem 0; font-size: 1.2rem; }
+#gas-figure input[type=range] { width: 100%; margin: 0; }
+#gas-figure .out { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; margin-top: .9rem; font-size: 1.2rem; }
+#gas-figure .out b { display: block; font-weight: normal; font-variant-numeric: tabular-nums; font-size: 1.35rem; }
+#gas-figure .frac { display: inline-flex; flex-direction: column; align-items: center; font-size: 1rem; line-height: 1.1; }
+#gas-figure .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px; }
+#gas-figure .t { color: var(--t); } #gas-figure .p { color: var(--p); } #gas-figure .v { color: var(--v); }
+</style>
+<figure id="gas-figure" style="margin-left:0;margin-right:0">
+<p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w."><span><i>k</i><i class="t">T</i> = ⅔ <i>w</i></span><span><i class="p">P</i> = ⅔ <i>n w</i></span></p>
+<canvas role="img" aria-label="Particles bounce in a closed box. Each hit on a wall flashes, and its length is the size of the kick."></canvas>
+<div class="row"><label for="gas-speed"><i>w</i></label><input id="gas-speed" type="range" min="0" max="100" step="1" value="50" aria-label="Motion of each particle"></div>
+<div class="row"><label for="gas-count"><i>N</i></label><input id="gas-count" type="range" min="40" max="400" step="10" value="150" aria-label="Number of particles"></div>
+<div class="out" aria-live="off">
+<div><i class="t">T</i><b id="gas-T" class="t">1.00</b></div>
+<div><i class="p">P</i><b id="gas-P" class="p">1.00</b></div>
+<div><span class="frac"><span><i class="p">P</i><i class="v">V</i></span><span><i>N k</i><i class="t">T</i></span></span><b id="gas-Z">1.00</b></div>
+</div>
+</figure>
+<script src="ideal-gas-law.js"></script>
+
 A sealed balloon carried from a warm room into the cold shrinks, though no air has left it. Pressure and temperature are taught as two properties of the air that happen to be linked. The question is why they are linked at all.
 
 They are linked because both measure the motion of the molecules. In a thin gas, with each line holding up to a fixed constant,
@@ -37,11 +64,3 @@ Add molecules at a fixed temperature and the pressure rises. Warm the gas with t
 The result stops where the assumptions do. Molecules that attract and repel add to the pressure, so a dense gas departs from the law. It would be false if a real gas at equilibrium did not approach $P = n\,k_B T$ as its density fell.
 
 The balloon in the cold lost no air. Its molecules slowed and their push on the skin fell.
-
-<figure id="gas-figure">
-<canvas style="width:100%;aspect-ratio:3/2;box-sizing:border-box;border:1px solid currentColor" aria-label="Point particles bouncing in a box"></canvas>
-<p><label for="gas-speed">Motion</label> <input id="gas-speed" type="range" min="50" max="200" step="1" value="100" style="vertical-align:middle"> <label for="gas-count" style="margin-left:1rem">Number</label> <input id="gas-count" type="range" min="20" max="400" step="10" value="150" style="vertical-align:middle"></p>
-<p><output for="gas-speed gas-count" aria-live="off"></output></p>
-<figcaption>Point particles that do not interact, drawn in two dimensions, where the factor of two-thirds becomes one. The pressure is counted from the momentum the particles deliver to the walls and shown beside the motion times the number per area. The temperature is the motion alone. The first slider moves both. The second moves the pressure and leaves the temperature where it was.</figcaption>
-</figure>
-<script src="ideal-gas-law.js"></script>
