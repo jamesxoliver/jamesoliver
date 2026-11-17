@@ -1,8 +1,8 @@
 // Geodesic dome figure for The Buildable Sphere, shown first on the page.
 // One input: the frequency. The polyhedron is built from a regular icosahedron
-// by Definition 1 and everything shown is measured from it: its joints N, its
-// surface S against the surface S0 of the sphere of equal volume, and the
-// product of the excess and the joints, which settles near 0.62.
+// by Definition 1 and everything shown is measured from it: its joints N, the
+// volume V it encloses against the volume V0 of the sphere with the same
+// surface, and the product of the shortfall and the joints, which settles near 0.93.
 (function () {
   "use strict";
 
@@ -54,7 +54,7 @@
     });
     // Surface of the polyhedron over the surface of a sphere of equal volume.
     var excess = Math.cbrt(S * S * S / (36 * Math.PI * V * V)) - 1;
-    return { verts: verts, tris: tris, excess: excess, joints: verts.length, r0: Math.cbrt(3 * V / (4 * Math.PI)),
+    return { verts: verts, tris: tris, excess: excess, joints: verts.length, rs: Math.sqrt(S / (4 * Math.PI)), share: Math.pow(1 + excess, -1.5),
              panels: Object.keys(panels).length, struts: Object.keys(struts).length };
   }
 
@@ -68,13 +68,13 @@
   var model = models[+slider.value];
   var yaw = 0.5, pitch = 0.35, dragging = false, lastX = 0, lastY = 0;
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var BARS = 92;
+  var BARS = 78, CUBE = Math.sqrt(Math.PI / 6);   // a cube encloses 72 percent of the sphere's volume
 
   function update() {
     model = models[+slider.value];
     oN.textContent = model.joints;
-    oS.textContent = (1 + model.excess).toFixed(4);
-    oK.textContent = (model.joints * model.excess).toFixed(2);
+    oS.textContent = model.share.toFixed(3);
+    oK.textContent = (model.joints * (1 - model.share)).toFixed(2);
     draw();
   }
 
@@ -119,9 +119,9 @@
     });
     ctx.globalAlpha = 1;
 
-    // S0: the sphere holding the same volume. The corners stand outside it and the panels cut inside it.
+    // V0: the sphere with the same surface. The corners stand outside it and the panels cut inside it.
     ctx.strokeStyle = c0; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.arc(ox, oy, model.r0 * R, 0, 2 * Math.PI); ctx.stroke();
+    ctx.beginPath(); ctx.arc(ox, oy, model.rs * R, 0, 2 * Math.PI); ctx.stroke();
 
     // N: the joints
     ctx.fillStyle = cN;
@@ -132,26 +132,40 @@
     });
 
     // labels on the drawing
-    ctx.font = "italic 18px " + fam; ctx.textBaseline = "middle"; ctx.textAlign = "left";
-    var lx = ox + model.r0 * R * 0.78, ly = oy - model.r0 * R * 0.78;
-    ctx.fillStyle = c0; ctx.fillText("S₀", lx + 10, ly - 8);
-    ctx.fillStyle = cS; ctx.textAlign = "right"; ctx.fillText("S", ox - model.r0 * R * 0.78 - 12, ly - 8);
+    ctx.font = "italic 18px " + fam; ctx.textBaseline = "middle";
+    var lx = model.rs * R * 0.78, ly = oy - model.rs * R * 0.78;
+    ctx.fillStyle = c0; ctx.textAlign = "left"; ctx.fillText("V₀", ox + lx + 10, ly - 8);
+    ctx.fillStyle = cS; ctx.textAlign = "right"; ctx.fillText("V", ox - lx - 12, ly - 8);
 
-    // the excess of S over S0 at each frequency, with its number of joints beneath
-    var top = side + 6, base = side + BARS - 26, bw = Math.min(46, (w - 24) / MAXF), x0 = ox - bw * MAXF / 2;
-    var scale = (base - top) / models[1].excess;
+    // one scale: the share of the sphere's volume enclosed for the same surface.
+    // It runs from a cube at the left to the sphere at the right, with a mark for each frequency.
+    var x0 = 30, x1 = w - 30, yb = side + 34, th = 12;
+    var X = function (share) { return x0 + (share - CUBE) / (1 - CUBE) * (x1 - x0); };
+    var fg = cs.color;
+    ctx.strokeStyle = fg; ctx.lineWidth = 1; ctx.globalAlpha = 0.5;
+    ctx.strokeRect(x0, yb, x1 - x0, th);
+    ctx.globalAlpha = 1;
+    ctx.fillStyle = cS; ctx.globalAlpha = 0.85;
+    ctx.fillRect(x0, yb, X(model.share) - x0, th);
+    ctx.globalAlpha = 1;
     for (var f = 1; f <= MAXF; f++) {
-      var e = models[f].excess, bx = x0 + (f - 1) * bw, on = f === +slider.value;
-      ctx.fillStyle = cS; ctx.globalAlpha = on ? 1 : 0.35;
-      ctx.fillRect(bx + 4, base - Math.max(1, e * scale), bw - 8, Math.max(1, e * scale));
-      ctx.globalAlpha = on ? 1 : 0.65;
-      ctx.fillStyle = cN; ctx.textAlign = "center"; ctx.textBaseline = "top";
-      ctx.font = (on ? "bold " : "") + "12px " + fam;
-      ctx.fillText(models[f].joints, bx + bw / 2, base + 8);
+      var on = f === +slider.value, tx = X(models[f].share);
+      ctx.strokeStyle = cN; ctx.lineWidth = on ? 2.5 : 1.2; ctx.globalAlpha = on ? 1 : 0.7;
+      ctx.beginPath(); ctx.moveTo(tx, yb - (on ? 8 : 4)); ctx.lineTo(tx, yb + th + (on ? 8 : 4)); ctx.stroke();
     }
     ctx.globalAlpha = 1;
+    // the sphere is the wall at the right end
+    ctx.strokeStyle = c0; ctx.lineWidth = 3;
+    ctx.beginPath(); ctx.moveTo(x1, yb - 12); ctx.lineTo(x1, yb + th + 12); ctx.stroke();
+    // end marks: a cube and a sphere
+    ctx.strokeStyle = fg; ctx.lineWidth = 1.5;
+    ctx.strokeRect(x0 - 22, yb - 1, 14, 14);
     ctx.strokeStyle = c0; ctx.lineWidth = 2;
-    ctx.beginPath(); ctx.moveTo(x0, base + 1); ctx.lineTo(x0 + bw * MAXF, base + 1); ctx.stroke();
+    ctx.beginPath(); ctx.arc(x1 + 15, yb + 6, 8, 0, 2 * Math.PI); ctx.stroke();
+    // the joints at the chosen frequency, under its mark
+    ctx.fillStyle = cN; ctx.textAlign = "center"; ctx.textBaseline = "top";
+    ctx.font = "13px " + fam;
+    ctx.fillText(model.joints, Math.min(X(model.share), x1 - 14), yb + th + 12);
   }
 
   slider.addEventListener("input", update);
