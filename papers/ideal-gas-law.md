@@ -20,7 +20,7 @@ claim: In a thin gas temperature is the motion of the molecules and pressure is 
 </style>
 <figure id="gas-figure" style="margin-left:0;margin-right:0">
 <p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w."><span><i>k</i><i class="t">T</i> = ⅔ <i>w</i></span><span><i class="p">P</i> = ⅔ <i>n w</i></span></p>
-<canvas role="img" aria-label="Particles bounce in a closed box. Each hit on a wall flashes, and its length is the size of the kick."></canvas>
+<canvas role="img" aria-label="Particles bounce in a closed box. Pressure is measured at the walls, where each hit flashes and fills a gauge. Temperature is measured from the particles themselves, as the spread of their speeds."></canvas>
 <div class="row"><label for="gas-speed"><i>w</i></label><input id="gas-speed" type="range" min="0" max="100" step="1" value="50" aria-label="Motion of each particle"></div>
 <div class="row"><label for="gas-count"><i>N</i></label><input id="gas-count" type="range" min="40" max="400" step="10" value="150" aria-label="Number of particles"></div>
 <div class="out" aria-live="off">
