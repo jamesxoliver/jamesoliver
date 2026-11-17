@@ -91,7 +91,8 @@ For large
 <p><em>Below the threshold the lifetime grows in proportion to the
 margin. Above it the lifetime grows exponentially with the margin. At
 exactly one it grows as the square of the margin.</em></p>
-<p><em>Proof.</em> Let
+<p><em>Proof.</em> The calculation is the classical one for the time a
+random walk takes to first reach a level [6]. Let
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>k</mi></msub><annotation encoding="application/x-tex">t_k</annotation></semantics></math>
 be the expected time to go from
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
@@ -152,8 +153,10 @@ mortal.</em></p>
 so the error count is a clock. Failure comes near the time
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M/(a-r)</annotation></semantics></math>,
 and the chance of failing soon rises as that time approaches. A rising
-chance of failure with age is what aging is. The system has a
-lifespan.</p>
+chance of failure with age is what aging is. The system has a lifespan.
+Reliability theory finds the same for the case with no repair at all: a
+system with redundant parts that cannot be replaced ages even when its
+parts do not [7].</p>
 <p>Above the threshold correction pulls the system back toward zero
 errors after every arrival, so the system sits near zero and keeps no
 record of its age. Failure needs a rare unbroken run of bad luck that
@@ -164,7 +167,9 @@ is constant, and waiting times for rare excursions of this kind are
 known to follow the exponential law [4]. An old system of this kind is
 exactly as likely to survive the coming year as a new one. It has a
 half-life,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msub><mo>=</mo><mi>T</mi><mrow><mi>ln</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">t_{1/2} = T \ln 2</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msub><mo>≈</mo><mi>T</mi><mrow><mi>ln</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">t_{1/2} \approx T \ln 2</annotation></semantics></math>
+for large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,
 and no lifespan. A radioactive atom persists in the same way.</p>
 <p><strong>Corollary 1.2 (the price of persistence).</strong> Suppose a
 system must last a thousand times longer. Below the threshold its margin
@@ -200,8 +205,9 @@ redundancy.</p>
 remark say when a system can hold its ratio above one.</p>
 <p><strong>Theorem 2 (the corrector must be better than it is
 bad).</strong> <em>Let the corrector attempt repairs at rate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
-Let each attempt remove an error with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+while errors are present. Let each attempt remove an error with
+probability
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
 and create a new one with probability
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.
@@ -299,8 +305,8 @@ The same happens where errors breed further errors, so that
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
 rises with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
-Its failure then starts slowly and accelerates. Theorem 1 applies within
-each stretch where the rates hold steady.</p>
+In either case failure starts slowly and accelerates. Theorem 1 applies
+within each stretch where the rates hold steady.</p>
 <p><strong>Falsification.</strong> The theorems follow from the
 definitions. The claim that can fail is that real systems fit them. The
 framework would be false if a system measured below the threshold
@@ -330,6 +336,11 @@ Exponentiality</em>. Springer.</li>
 <li>Eigen, M. (1971). Selforganization of matter and the evolution of
 biological macromolecules. <em>Naturwissenschaften</em>, 58,
 465–523.</li>
+<li>Feller, W. (1968). <em>An Introduction to Probability Theory and Its
+Applications</em>, Volume 1 (3rd ed.). Wiley.</li>
+<li>Gavrilov, L. A., &amp; Gavrilova, N. S. (2001). The reliability
+theory of aging and longevity. <em>Journal of Theoretical Biology</em>,
+213(4), 527–545.</li>
 </ol>
 </body>
 </html>
