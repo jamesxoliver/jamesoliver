@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Why Some Systems Last and Others Decay</title>
+<meta name="description" content="A system that removes errors more slowly than they arrive has a lifespan and one that removes them faster has only a half-life.">
+<link rel="alternate" type="text/markdown" href="why-some-systems-last-and-others-decay.md">
+<style>
+body { max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.5; }
+:root { color-scheme: light dark; }
+table { border-collapse: collapse; }
+td, th { padding: 0.3rem 0.6rem 0.3rem 0; border-bottom: 1px solid #8884; }
+pre, math[display="block"] { overflow-x: auto; }
+img { max-width: 100%; }
+.notes { text-transform: lowercase; }
+</style>
+</head>
+<body>
+<nav><a href="../">Home</a></nav>
+<h1>Why Some Systems Last and Others Decay</h1>
+<p class="claim"><em>A system that removes errors more slowly than they
+arrive has a lifespan and one that removes them faster has only a
+half-life.</em></p>
+<p>A wooden ship left at anchor rots within a human lifetime. The same
+ship with a crew replacing its planks can sail for centuries. A body
+replaces most of its own parts and still fails within a century, while
+the unbroken line of cells that produced it has not failed in billions
+of years. We ask what separates the things that last from the things
+that decay.</p>
+<p>The answer is one number. Every such system gains errors at some rate
+and removes them at some rate. The ratio of removal to arrival decides
+its fate. Below one, the system has a lifespan, fixed by how many errors
+it can carry. Above one, it has no lifespan at all. It can still fail by
+chance, but its chance of failing is the same at every age, and the
+expected wait grows exponentially with the errors it can carry. The ship
+and the body obey the same law because the ratio has no units.</p>
+<p>This paper presents no new data. The mechanisms described here are
+established across information theory, reliability theory, probability
+and thermodynamics. The contribution is integration: making explicit the
+chain that connects them, so the unified pattern becomes visible and
+usable. Shannon showed that messages survive a noisy channel with any
+desired reliability below a critical rate [1]. Von Neumann showed that
+reliable systems can be built from unreliable parts below a critical
+fault rate [2]. Landauer showed that erasing information has a minimum
+cost in energy [3]. We join these into one threshold for the persistence
+of any system through time.</p>
+<p><strong>Definition 1 (system and reference).</strong> A system is
+anything that can be in one of many distinguishable states. Its
+reference is the state, or set of states, in which it does what it is
+for.</p>
+<p><strong>Definition 2 (error).</strong> An error is one countable
+departure of the system from its reference: a rotted plank, a flipped
+bit, a miscopied letter, an altered base. We write
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+for the number of errors the system carries.</p>
+<p><strong>Definition 3 (margin).</strong> The margin
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+is the number of errors at which the system stops functioning. It
+functions while
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+is below
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+and has failed when
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+reaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Redundancy is margin: spare planks, spare cells, spare copies.</p>
+<p><strong>Definition 4 (rates and ratio).</strong> Errors arise at
+random at an average rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+per unit time. While the system carries at least one error, correction
+removes errors at random at an average rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+per unit time. The persistence ratio is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mi>r</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">\rho = r/a</annotation></semantics></math>.
+Both rates count the same kind of error over the same unit of time, so
+the units cancel and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+is a pure number. It can be compared between a ship and a cell with no
+conversion.</p>
+<p><strong>Theorem 1 (the persistence threshold).</strong> <em>Let the
+lifetime
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+be the expected time for a system that starts with no errors to reach
+its margin
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+For large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>,</em></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&lt;</mo><mn>1</mn><mo>:</mo><mspace width="1.0em"></mspace><mi>T</mi><mo>≈</mo><mfrac><mi>M</mi><mrow><mi>a</mi><mo>−</mo><mi>r</mi></mrow></mfrac><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mi>ρ</mi><mo>&gt;</mo><mn>1</mn><mo>:</mo><mspace width="1.0em"></mspace><mi>T</mi><mo>≈</mo><mfrac><msup><mi>ρ</mi><mrow><mi>M</mi><mo>+</mo><mn>1</mn></mrow></msup><mrow><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>ρ</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow></mfrac></mrow><annotation encoding="application/x-tex">\rho &lt; 1:\quad T \approx \frac{M}{a - r} \qquad\qquad \rho &gt; 1:\quad T \approx \frac{\rho^{M+1}}{a(\rho-1)^{2}}</annotation></semantics></math></p>
+<p><em>Below the threshold the lifetime grows in proportion to the
+margin. Above it the lifetime grows exponentially with the margin. At
+exactly one it grows as the square of the margin.</em></p>
+<p><em>Proof.</em> Let
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>k</mi></msub><annotation encoding="application/x-tex">t_k</annotation></semantics></math>
+be the expected time to go from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+errors to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math>.
+From zero errors only an arrival can occur, so
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mn>0</mn></msub><mo>=</mo><mn>1</mn><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">t_0 = 1/a</annotation></semantics></math>.
+From
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>≥</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k \ge 1</annotation></semantics></math>
+errors the next event is an arrival, which completes the step, or a
+removal, after which the system must climb from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k-1</annotation></semantics></math>
+back to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+and then on to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k+1</annotation></semantics></math>.
+Averaging over the two gives</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mi>k</mi></msub><mo>=</mo><mfrac><mn>1</mn><mi>a</mi></mfrac><mo>+</mo><mi>ρ</mi><mspace width="0.167em"></mspace><msub><mi>t</mi><mrow><mi>k</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mfrac><mn>1</mn><mi>a</mi></mfrac><mrow><mo stretchy="true" form="prefix">(</mo><mn>1</mn><mo>+</mo><mi>ρ</mi><mo>+</mo><mi>…</mi><mo>+</mo><msup><mi>ρ</mi><mi>k</mi></msup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">t_k = \frac{1}{a} + \rho\, t_{k-1} = \frac{1}{a}\left(1 + \rho + \dots + \rho^{k}\right)</annotation></semantics></math></p>
+<p>The lifetime is the sum of
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>k</mi></msub><annotation encoding="application/x-tex">t_k</annotation></semantics></math>
+for
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+from
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>
+to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">M-1</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&lt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho &lt; 1</annotation></semantics></math>
+each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>k</mi></msub><annotation encoding="application/x-tex">t_k</annotation></semantics></math>
+approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>1</mn><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">1/(a-r)</annotation></semantics></math>
+and the sum approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M/(a-r)</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&gt;</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho &gt; 1</annotation></semantics></math>
+the last terms dominate and the sum approaches
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msup><mi>ρ</mi><mrow><mi>M</mi><mo>+</mo><mn>1</mn></mrow></msup><mi>/</mi><mi>a</mi><mo stretchy="false" form="prefix">(</mo><mi>ρ</mi><mo>−</mo><mn>1</mn><msup><mo stretchy="false" form="postfix">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">\rho^{M+1}/a(\rho-1)^2</annotation></semantics></math>.
+When
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">\rho = 1</annotation></semantics></math>
+each
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>t</mi><mi>k</mi></msub><annotation encoding="application/x-tex">t_k</annotation></semantics></math>
+equals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo stretchy="false" form="prefix">(</mo><mi>k</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">(k+1)/a</annotation></semantics></math>
+and the sum is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mo stretchy="false" form="prefix">(</mo><mi>M</mi><mo>+</mo><mn>1</mn><mo stretchy="false" form="postfix">)</mo><mi>/</mi><mn>2</mn><mi>a</mi></mrow><annotation encoding="application/x-tex">M(M+1)/2a</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>Take a system that gains one error a day and fails at twenty.
+Removing half an error a day, it lasts 38 days. Removing one a day, it
+lasts 210 days. Removing two a day, it lasts 2,097,130 days, about 5,700
+years. Doubling the removal rate across the threshold multiplies the
+lifetime ten thousand times.</p>
+<p><strong>Corollary 1.1 (lifespan and half-life).</strong> <em>Below
+the threshold a system ages. Above it a system is ageless and still
+mortal.</em></p>
+<p>Below the threshold errors pile up at the steady net rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>a</mi><mo>−</mo><mi>r</mi></mrow><annotation encoding="application/x-tex">a - r</annotation></semantics></math>,
+so the error count is a clock. Failure comes near the time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M/(a-r)</annotation></semantics></math>,
+and the chance of failing soon rises as that time approaches. A rising
+chance of failure with age is what aging is. The system has a
+lifespan.</p>
+<p>Above the threshold correction pulls the system back toward zero
+errors after every arrival, so the system sits near zero and keeps no
+record of its age. Failure needs a rare unbroken run of bad luck that
+carries it from near zero all the way to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Each such attempt starts fresh, so the chance of failure per unit time
+is constant, and waiting times for rare excursions of this kind are
+known to follow the exponential law [4]. An old system of this kind is
+exactly as likely to survive the coming year as a new one. It has a
+half-life,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>t</mi><mrow><mn>1</mn><mi>/</mi><mn>2</mn></mrow></msub><mo>=</mo><mi>T</mi><mrow><mi>ln</mi><mo>&#8289;</mo></mrow><mn>2</mn></mrow><annotation encoding="application/x-tex">t_{1/2} = T \ln 2</annotation></semantics></math>,
+and no lifespan. A radioactive atom persists in the same way.</p>
+<p><strong>Corollary 1.2 (the price of persistence).</strong> Suppose a
+system must last a thousand times longer. Below the threshold its margin
+must grow a thousandfold, since
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+is proportional to
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>.
+Above the threshold, at
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>2</mn></mrow><annotation encoding="application/x-tex">\rho = 2</annotation></semantics></math>,
+ten more units of margin suffice, since each unit doubles
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>.
+In general the margin needed for a lifetime
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>T</mi><annotation encoding="application/x-tex">T</annotation></semantics></math>
+is</p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>&lt;</mo><mn>1</mn><mo>:</mo><mspace width="1.0em"></mspace><mi>M</mi><mo>≈</mo><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo><mspace width="0.167em"></mspace><mi>T</mi><mspace width="2.0em"></mspace><mspace width="2.0em"></mspace><mi>ρ</mi><mo>&gt;</mo><mn>1</mn><mo>:</mo><mspace width="1.0em"></mspace><mi>M</mi><mo>≈</mo><mfrac><mrow><mrow><mi>ln</mi><mo>&#8289;</mo></mrow><mi>T</mi></mrow><mrow><mrow><mi>ln</mi><mo>&#8289;</mo></mrow><mi>ρ</mi></mrow></mfrac></mrow><annotation encoding="application/x-tex">\rho &lt; 1:\quad M \approx (a - r)\,T \qquad\qquad \rho &gt; 1:\quad M \approx \frac{\ln T}{\ln \rho}</annotation></semantics></math></p>
+<p>Above the threshold any lifetime can be bought with a margin that
+grows only as its logarithm. Below the threshold no finite margin buys
+more than a proportionate lifetime. Shannon’s theorem for the noisy
+channel has the same form: below a critical rate, added redundancy
+drives the chance of error toward zero exponentially fast, and above it
+no redundancy does [1].</p>
+<p>This holds when added margin does not bring added arrivals in
+proportion. Where margin comes from spare parts that are themselves
+exposed to error,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+grows with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>M</mi><annotation encoding="application/x-tex">M</annotation></semantics></math>
+and the ratio holds only if removal grows with it, as when each part is
+repaired where it sits. A system whose arrivals grow with its spares
+while its removal stays fixed is pushed below the threshold by its own
+redundancy.</p>
+<p>Theorem 1 takes the two rates as given. Two further results and a
+remark say when a system can hold its ratio above one.</p>
+<p><strong>Theorem 2 (the corrector must be better than it is
+bad).</strong> <em>Let the corrector attempt repairs at rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>.
+Let each attempt remove an error with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>f</mi><annotation encoding="application/x-tex">f</annotation></semantics></math>
+and create a new one with probability
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>c</mi><annotation encoding="application/x-tex">c</annotation></semantics></math>.
+Then the effective ratio is</em></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ρ</mi><mtext mathvariant="normal">eff</mtext></msub><mo>=</mo><mfrac><mrow><mi>s</mi><mi>f</mi></mrow><mrow><mi>a</mi><mo>+</mo><mi>s</mi><mi>c</mi></mrow></mfrac><mo>&lt;</mo><mfrac><mi>f</mi><mi>c</mi></mfrac></mrow><annotation encoding="application/x-tex">\rho_{\text{eff}} = \frac{s f}{a + s c} &lt; \frac{f}{c}</annotation></semantics></math></p>
+<p><em>and it exceeds one only if
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mo>&gt;</mo><mi>c</mi></mrow><annotation encoding="application/x-tex">f &gt; c</annotation></semantics></math>
+and
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo>&gt;</mo><mi>a</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>−</mo><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">s &gt; a/(f-c)</annotation></semantics></math>.</em></p>
+<p><em>Proof.</em> Attempts remove errors at rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>f</mi></mrow><annotation encoding="application/x-tex">sf</annotation></semantics></math>
+and add them at rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">sc</annotation></semantics></math>
+on top of the arrivals
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>.
+The ratio of removal to total arrival is
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mi>f</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>+</mo><mi>s</mi><mi>c</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">sf/(a+sc)</annotation></semantics></math>,
+which rises toward
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>f</mi><mi>/</mi><mi>c</mi></mrow><annotation encoding="application/x-tex">f/c</annotation></semantics></math>
+as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>s</mi><annotation encoding="application/x-tex">s</annotation></semantics></math>
+grows and never reaches it. Setting it above one gives
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>s</mi><mo stretchy="false" form="prefix">(</mo><mi>f</mi><mo>−</mo><mi>c</mi><mo stretchy="false" form="postfix">)</mo><mo>&gt;</mo><mi>a</mi></mrow><annotation encoding="application/x-tex">s(f-c) &gt; a</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>A corrector that breaks as much as it fixes cannot preserve a system
+at any speed. Working faster helps only a corrector that is already more
+often right than wrong. Von Neumann found the same kind of limit for
+circuits built from faulty parts: below a critical fault rate redundancy
+makes the whole reliable, and above it nothing does [2].</p>
+<p><strong>Theorem 3 (the reference must itself persist).</strong>
+<em>If correction restores the system toward a stored reference and the
+reference gains errors at rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>R</mi></msub><annotation encoding="application/x-tex">a_R</annotation></semantics></math>
+with no correction of its own, then the lifetime grows only in
+proportion to the margin, as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><msub><mi>a</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">M/a_R</annotation></semantics></math>
+plus the delay of copying, however large
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>ρ</mi><annotation encoding="application/x-tex">\rho</annotation></semantics></math>
+is.</em></p>
+<p><em>Proof.</em> Correction returns each part to the reference’s
+version of it. An error in the reference is therefore written into the
+system when correction next reaches that part, and it is never removed
+afterward, since the system has nothing else to compare against. Such
+errors enter at the long-run rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>R</mi></msub><annotation encoding="application/x-tex">a_R</annotation></semantics></math>
+and are permanent. By Theorem 1 with removal zero, permanent errors
+arriving at rate
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>a</mi><mi>R</mi></msub><annotation encoding="application/x-tex">a_R</annotation></semantics></math>
+reach the margin in a time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><msub><mi>a</mi><mi>R</mi></msub></mrow><annotation encoding="application/x-tex">M/a_R</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>▫</mi><annotation encoding="application/x-tex">\square</annotation></semantics></math></p>
+<p>So the reference needs a persistence ratio above one in its own
+right, and the reference of the reference after it. The regress closes
+in two known ways. The first is comparison: several copies are checked
+against one another and the majority restores the minority, so the
+reference lives in the agreement among copies and in no single one [2].
+The second is selection: many copies exist, those that fail are
+discarded and those that work are copied again. Selection needs no
+stored reference, because function itself is the test. It removes errors
+by removing their carriers, and it has a threshold of its own on how
+many errors each copying may add [5].</p>
+<p><strong>Remark (removal costs work).</strong> Returning a part from
+many possible states to one erases information, and erasing information
+dissipates a minimum of energy [3]. A system cut off from energy
+therefore has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math>
+and decays in a time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">M/a</annotation></semantics></math>.
+Persistence belongs only to systems that energy flows through.</p>
+<p>The same results read in four materials. A ship at anchor has
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>r</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">r = 0</annotation></semantics></math>
+and rots in the time
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mi>a</mi></mrow><annotation encoding="application/x-tex">M/a</annotation></semantics></math>.
+A ship with a crew, timber and its builder’s lines has a corrector, an
+energy supply and a reference, and it lasts while the crew replaces
+planks faster than they rot. A text copied by hand drifts with every
+copy unless each copy is checked against a count of its letters, which
+is comparison. A stored message survives on unreliable hardware when its
+redundant copies are compared and rewritten faster than they flip. A
+living body replaces most of its parts and so holds most of itself above
+the threshold, while the parts it cannot replace sit below it and set
+its lifespan. The line of cells that passes from parent to offspring is
+kept by selection and has persisted since life began.</p>
+<p><strong>Boundaries.</strong> The theorems assume errors that are
+countable, of comparable weight and independent, arriving one at a time
+at steady rates. A single blow that delivers the whole margin at once
+lies outside the model and adds a constant chance of failure to any
+system, ageless or aging. Where the corrector itself weakens as errors
+accumulate,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>r</mi><annotation encoding="application/x-tex">r</annotation></semantics></math>
+falls as
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+rises and a system that begins above the threshold can cross below it.
+The same happens where errors breed further errors, so that
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>a</mi><annotation encoding="application/x-tex">a</annotation></semantics></math>
+rises with
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>.
+Its failure then starts slowly and accelerates. Theorem 1 applies within
+each stretch where the rates hold steady.</p>
+<p><strong>Falsification.</strong> The theorems follow from the
+definitions. The claim that can fail is that real systems fit them. The
+framework would be false if a system measured below the threshold
+outlasted
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>M</mi><mi>/</mi><mo stretchy="false" form="prefix">(</mo><mi>a</mi><mo>−</mo><mi>r</mi><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">M/(a-r)</annotation></semantics></math>
+many times over, if a system held above the threshold at steady rates
+showed a chance of failure that rose with its age, if a system persisted
+with a corrector that broke as much as it fixed or if a system persisted
+with no energy flowing through it.</p>
+<p>Nothing lasts by being made of lasting material. Planks rot, ink
+fades, molecules break. What lasts is a pattern whose errors are removed
+faster than they arrive, measured against a reference that is itself
+kept and paid for in work. Where that holds, age stops counting. Where
+it fails, the margin is a clock.</p>
+<p><strong>References</strong></p>
+<ol type="1">
+<li>Shannon, C. E. (1948). A mathematical theory of communication.
+<em>Bell System Technical Journal</em>, 27, 379–423 and 623–656.</li>
+<li>von Neumann, J. (1956). Probabilistic logics and the synthesis of
+reliable organisms from unreliable components. In <em>Automata
+Studies</em> (pp. 43–98). Princeton University Press.</li>
+<li>Landauer, R. (1961). Irreversibility and heat generation in the
+computing process. <em>IBM Journal of Research and Development</em>,
+5(3), 183–191.</li>
+<li>Keilson, J. (1979). <em>Markov Chain Models: Rarity and
+Exponentiality</em>. Springer.</li>
+<li>Eigen, M. (1971). Selforganization of matter and the evolution of
+biological macromolecules. <em>Naturwissenschaften</em>, 58,
+465–523.</li>
+</ol>
+</body>
+</html>

@@ -11,3 +11,4 @@
 - [Renewable Energy Is Nuclear](https://jamesoliver.xyz/papers/renewable-energy-is-nuclear.md): Sunlight, wind, falling water, wood and coal are one source, the fusion of hydrogen in the Sun, reaching us after different delays.
 - [Collect or Release](https://jamesoliver.xyz/papers/collect-or-release.md): We either collect energy already in motion or release energy held in a store and what separates the two is whether the source refills faster than we draw on it.
 - [Entropy Is a Count](https://jamesoliver.xyz/papers/entropy-is-a-count.md): Entropy is the count of the arrangements that fit a description and a shuffled system is found where the count is largest.
+- [Why Some Systems Last and Others Decay](https://jamesoliver.xyz/papers/why-some-systems-last-and-others-decay.md): A system that removes errors more slowly than they arrive has a lifespan and one that removes them faster has only a half-life.
