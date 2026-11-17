@@ -1,7 +1,8 @@
-// Geodesic dome figure for The Buildable Sphere.
-// Builds the frequency-n geodesic polyhedron from a regular icosahedron,
-// computes its area and volume, and draws it. Every number shown is
-// computed from the polyhedron as drawn.
+// Geodesic dome figure for The Buildable Sphere, shown first on the page.
+// One input: the frequency. The polyhedron is built from a regular icosahedron
+// by Definition 1 and everything shown is measured from it: its joints N, its
+// surface S against the surface S0 of the sphere of equal volume, and the
+// product of the excess and the joints, which settles near 0.62.
 (function () {
   "use strict";
 
@@ -53,34 +54,40 @@
     });
     // Surface of the polyhedron over the surface of a sphere of equal volume.
     var excess = Math.cbrt(S * S * S / (36 * Math.PI * V * V)) - 1;
-    return { verts: verts, tris: tris, excess: excess, joints: verts.length,
+    return { verts: verts, tris: tris, excess: excess, joints: verts.length, r0: Math.cbrt(3 * V / (4 * Math.PI)),
              panels: Object.keys(panels).length, struts: Object.keys(struts).length };
   }
 
   var fig = document.getElementById("dome-figure");
   if (!fig) return;
-  var canvas = fig.querySelector("canvas"), slider = fig.querySelector("input"), out = fig.querySelector("output");
-  var ctx = canvas.getContext("2d"), model = build(+slider.value);
+  var canvas = fig.querySelector("canvas"), slider = document.getElementById("dome-frequency");
+  var oN = document.getElementById("dome-N"), oS = document.getElementById("dome-S"), oK = document.getElementById("dome-K");
+  var ctx = canvas.getContext("2d");
+  var MAXF = +slider.max, models = [];
+  for (var f = 1; f <= MAXF; f++) models[f] = build(f);
+  var model = models[+slider.value];
   var yaw = 0.5, pitch = 0.35, dragging = false, lastX = 0, lastY = 0;
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var BARS = 92;
 
-  function pct(x) { return x >= 0.01 ? (100 * x).toFixed(2) : (100 * x).toFixed(3); }
   function update() {
-    model = build(+slider.value);
-    out.textContent = "frequency " + slider.value + ": " + pct(model.excess) + "% more surface than a sphere of the same volume, " +
-      model.joints + " joints, " + model.panels + " panel types, " + model.struts + " strut lengths";
+    model = models[+slider.value];
+    oN.textContent = model.joints;
+    oS.textContent = (1 + model.excess).toFixed(4);
+    oK.textContent = (model.joints * model.excess).toFixed(2);
     draw();
   }
 
   function draw() {
-    var w = canvas.clientWidth, h = canvas.clientHeight, dpr = window.devicePixelRatio || 1;
-    if (canvas.width !== Math.round(w * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
+    var w = canvas.clientWidth, side = Math.min(w, 460), h = side + BARS, dpr = window.devicePixelRatio || 1;
+    canvas.style.height = h + "px";
+    if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) { canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr); }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    var fg = getComputedStyle(fig).color, m = fg.match(/\d+(\.\d+)?/g) || [0, 0, 0];
-    var rgb = m[0] + "," + m[1] + "," + m[2];
+    var cs = getComputedStyle(fig), fam = cs.fontFamily;
+    var cS = cs.getPropertyValue("--s").trim(), c0 = cs.getPropertyValue("--s0").trim(), cN = cs.getPropertyValue("--n").trim();
     var cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pitch), sp = Math.sin(pitch);
-    var R = Math.min(w, h) * 0.44, ox = w / 2, oy = h / 2;
+    var R = side * 0.42, ox = w / 2, oy = side / 2;
     var P = model.verts.map(function (v) {
       var x = cy * v[0] + sy * v[2], z = -sy * v[0] + cy * v[2];
       var y = cp * v[1] - sp * z; z = sp * v[1] + cp * z;
@@ -95,8 +102,11 @@
       faces.push({ t: t, z: centre[2], shade: Math.max(0, dot(nrm, light)) });
     });
     faces.sort(function (p, q) { return p.z - q.z; });
+
+    // S: the flat panels
     ctx.lineJoin = "round";
-    ctx.lineWidth = model.tris.length > 600 ? 0.6 : 1;
+    ctx.lineWidth = model.tris.length > 600 ? 0.7 : 1.2;
+    ctx.strokeStyle = cS;
     faces.forEach(function (f) {
       ctx.beginPath();
       f.t.forEach(function (i, k) {
@@ -104,16 +114,50 @@
         if (k) ctx.lineTo(x, y); else ctx.moveTo(x, y);
       });
       ctx.closePath();
-      ctx.fillStyle = "rgba(" + rgb + "," + (0.05 + 0.22 * f.shade).toFixed(3) + ")";
-      ctx.fill();
-      ctx.strokeStyle = "rgba(" + rgb + ",0.7)";
-      ctx.stroke();
+      ctx.fillStyle = cS; ctx.globalAlpha = 0.06 + 0.26 * f.shade; ctx.fill();
+      ctx.globalAlpha = 0.85; ctx.stroke();
     });
+    ctx.globalAlpha = 1;
+
+    // S0: the sphere holding the same volume. The corners stand outside it and the panels cut inside it.
+    ctx.strokeStyle = c0; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.arc(ox, oy, model.r0 * R, 0, 2 * Math.PI); ctx.stroke();
+
+    // N: the joints
+    ctx.fillStyle = cN;
+    var jr = Math.max(1.3, 4.2 - 0.4 * +slider.value);
+    P.forEach(function (v) {
+      if (v[2] <= 0.02) return;
+      ctx.beginPath(); ctx.arc(ox + v[0] * R, oy - v[1] * R, jr, 0, 2 * Math.PI); ctx.fill();
+    });
+
+    // labels on the drawing
+    ctx.font = "italic 18px " + fam; ctx.textBaseline = "middle"; ctx.textAlign = "left";
+    var lx = ox + model.r0 * R * 0.78, ly = oy - model.r0 * R * 0.78;
+    ctx.fillStyle = c0; ctx.fillText("S₀", lx + 10, ly - 8);
+    ctx.fillStyle = cS; ctx.textAlign = "right"; ctx.fillText("S", ox - model.r0 * R * 0.78 - 12, ly - 8);
+
+    // the excess of S over S0 at each frequency, with its number of joints beneath
+    var top = side + 6, base = side + BARS - 26, bw = Math.min(46, (w - 24) / MAXF), x0 = ox - bw * MAXF / 2;
+    var scale = (base - top) / models[1].excess;
+    for (var f = 1; f <= MAXF; f++) {
+      var e = models[f].excess, bx = x0 + (f - 1) * bw, on = f === +slider.value;
+      ctx.fillStyle = cS; ctx.globalAlpha = on ? 1 : 0.35;
+      ctx.fillRect(bx + 4, base - Math.max(1, e * scale), bw - 8, Math.max(1, e * scale));
+      ctx.globalAlpha = on ? 1 : 0.65;
+      ctx.fillStyle = cN; ctx.textAlign = "center"; ctx.textBaseline = "top";
+      ctx.font = (on ? "bold " : "") + "12px " + fam;
+      ctx.fillText(models[f].joints, bx + bw / 2, base + 8);
+    }
+    ctx.globalAlpha = 1;
+    ctx.strokeStyle = c0; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(x0, base + 1); ctx.lineTo(x0 + bw * MAXF, base + 1); ctx.stroke();
   }
 
   slider.addEventListener("input", update);
-  canvas.addEventListener("pointerdown", function (e) { dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); });
+  canvas.addEventListener("pointerdown", function (e) { if (e.offsetY > Math.min(canvas.clientWidth, 460)) return; dragging = true; lastX = e.clientX; lastY = e.clientY; canvas.setPointerCapture(e.pointerId); });
   canvas.addEventListener("pointerup", function () { dragging = false; });
+  canvas.addEventListener("pointercancel", function () { dragging = false; });
   canvas.addEventListener("pointermove", function (e) {
     if (!dragging) return;
     yaw += (e.clientX - lastX) * 0.01; pitch += (e.clientY - lastY) * 0.01;
