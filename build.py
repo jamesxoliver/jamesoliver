@@ -20,9 +20,10 @@ own page). Without it, the folder name is title-cased.
 Paper titles are parsed from the paper files themselves (the <h1>),
 so a paper's page is the only place its metadata lives.
 
-Pages are plain semantic HTML. style.css sets the typeface (STIX Two Text,
-matching the equations) and what defaults get wrong for reading (line
-length, dark mode, table spacing). It is stamped inline into every page, generated or
+Pages are plain semantic HTML. style.css sets the typeface (the device's
+system sans, San Francisco on Apple, with STIX Two Text loaded for figure
+symbols) and what defaults get wrong for reading (line length, dark mode,
+table spacing). It is stamped inline into every page, generated or
 hand-written, and into _paper-template.html, so each file stays
 self-contained.
 
