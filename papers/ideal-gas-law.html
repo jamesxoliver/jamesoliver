@@ -7,7 +7,8 @@
 <meta name="description" content="Temperature is the energy each molecule of a thin gas carries and pressure is the push the crowd of molecules delivers to a surface, so they are two measurements of one motion and the gas law relates them.">
 <link rel="alternate" type="text/markdown" href="ideal-gas-law.md">
 <style>
-body { max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.5; }
+@import url("https://fonts.googleapis.com/css2?family=STIX+Two+Text:ital,wght@0,400;0,700;1,400;1,700&display=swap");
+body { font-family: "STIX Two Text", "Times New Roman", Times, serif; max-width: 36rem; margin: 2.5rem auto; padding: 0 1.25rem; line-height: 1.5; }
 :root { color-scheme: light dark; }
 table { border-collapse: collapse; }
 td, th { padding: 0.3rem 0.6rem 0.3rem 0; border-bottom: 1px solid #8884; }
@@ -35,12 +36,13 @@ relates them.</em></p>
 #gas-figure .out b { display: block; font-weight: normal; font-variant-numeric: tabular-nums; font-size: 1.35rem; }
 #gas-figure .frac { display: inline-flex; flex-direction: column; align-items: center; font-size: 1rem; line-height: 1.1; }
 #gas-figure .frac > span:first-child { border-bottom: 1px solid currentColor; padding: 0 3px; }
+#gas-figure .gap { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 #gas-figure .t { color: var(--t); } #gas-figure .p { color: var(--p); } #gas-figure .v { color: var(--v); }
 </style>
 <figure id="gas-figure" style="margin-left:0;margin-right:0">
 <p class="laws" aria-label="k T equals two thirds w. P equals two thirds n w.">
-<span><i>k</i><i class="t">T</i> = ⅔
-<i>w</i></span><span><i class="p">P</i> = ⅔ <i>n w</i></span>
+<span><i>k</i><i class="t">T</i> = ⅔ <i>w</i></span><span class="gap">
+and </span><span><i class="p">P</i> = ⅔ <i>n w</i></span>
 </p>
 <canvas role="img" aria-label="Particles bounce in a closed box. Pressure is measured at the walls, where each hit flashes and fills a gauge. Temperature is measured from the particles themselves, as the spread of their speeds.">
 </canvas>
@@ -64,7 +66,7 @@ k</i><i class="t">T</i></span></span><b id="gas-Z">1.00</b>
 </div>
 </div>
 </figure>
-<script src="ideal-gas-law.js?v=8bf82038"></script>
+<script src="ideal-gas-law.js?v=14daabdc"></script>
 <p>A sealed balloon carried from a warm room into the cold shrinks,
 though no air has left it. Pressure and temperature are taught as two
 properties of the air that happen to be linked. The question is what
@@ -169,11 +171,11 @@ the wall in Corollary 2 is fixed. Across it the two measurements part.
 The gases agree on temperature and disagree on pressure for as long as
 their numbers per volume differ.</p>
 <p>They part in the other direction too. A beam of molecules all moving
-one way at one speed delivers a push to any surface it strikes, so it
-has a pressure on that surface. Its energy is not shared among the three
-directions, so it is not in the equilibrium Theorem 2 assumes and it has
-no single temperature. The push needs only motion and number. The
-temperature needs the motion to have settled.</p>
+one way at one speed pushes on any surface it strikes and the push
+depends on which way the surface faces. Its energy is not shared among
+the three directions, so it is not in the equilibrium Theorem 2 assumes
+and it has no single temperature. The push needs only motion and number.
+The temperature needs the motion to have settled.</p>
 <p>The result stops where the assumptions do. Molecules that take up
 room add to the push and their attraction takes from it, so a dense gas
 departs from the law. The arithmetic of the two theorems cannot fail.
