@@ -1,5 +1,5 @@
 ---
-claim: In a thin gas temperature is the motion of the molecules and pressure is that motion times their number in each unit of volume, so pressure is temperature times number.
+claim: Temperature is the energy each molecule of a thin gas carries and pressure is the push the crowd of molecules delivers to a surface, so they are two measurements of one motion and the gas law relates them.
 ---
 
 # The Ideal Gas Law
@@ -31,36 +31,46 @@ claim: In a thin gas temperature is the motion of the molecules and pressure is 
 </figure>
 <script src="ideal-gas-law.js"></script>
 
-A sealed balloon carried from a warm room into the cold shrinks, though no air has left it. Pressure and temperature are taught as two properties of the air that happen to be linked. The question is why they are linked at all.
+A sealed balloon carried from a warm room into the cold shrinks, though no air has left it. Pressure and temperature are taught as two properties of the air that happen to be linked. The question is what each one is and why they are linked.
 
-They are linked because both measure the motion of the molecules. In a thin gas, with each line holding up to a fixed constant,
+Neither belongs to a single molecule. Each is a measurement of the crowd. Temperature measures the energy each molecule carries in its movement. Pressure measures the push the crowd delivers to a surface, which depends on that same energy and on how many molecules there are in each unit of volume. The two measurements are different and the gas law holds because one motion sets both. In a thin gas, with each line holding up to a fixed constant,
 
-<p style="margin-left:2rem">temperature = motion<br>
-pressure = motion × number per volume<br>
+<p style="margin-left:2rem">temperature = motion per molecule<br>
+pressure = motion per molecule × number per volume<br>
 pressure = temperature × number per volume</p>
 
-The third line follows from the first two and it is the ideal gas law. The work is to show the first two.
+The third line follows from the first two and it is the ideal gas law. The work is to show the first two and then to show where the two measurements come apart.
 
 We assume a gas is $N$ point particles of mass $m$ that do not interact, spread uniformly through a volume $V$ and moving with no preferred direction. We write $n = N/V$ for the number per volume.
 
 **Definition 1.** The *motion* $w$ is the average energy of a particle's movement, $w = \tfrac{1}{2}m\langle v^2\rangle$.
 
+The first measurement is made at a wall.
+
 **Theorem 1.** *Pressure is two-thirds of the motion times the number per volume, $P = \tfrac{2}{3}\,n\,w$.*
 
 *Proof.* Pressure is the momentum delivered to a wall per unit time per unit area. A particle approaching the wall with velocity component $v_x$ rebounds and delivers $2mv_x$. Half the particles are moving toward the wall and those within a distance $v_x t$ reach it within a time $t$, so $P = n\,m\langle v_x^2\rangle$. With no preferred direction $\langle v_x^2\rangle = \tfrac{1}{3}\langle v^2\rangle$. Hence $P = \tfrac{1}{3}\,n\,m\langle v^2\rangle = \tfrac{2}{3}\,n\,w$. $\square$
 
-We assume the gas is in classical thermal equilibrium at absolute temperature $T$, where statistical mechanics gives each of the three directions of a particle's movement an average energy of $\tfrac{1}{2}k_B T$.
+The second measurement needs no wall. Temperature is what a thermometer reads and a thermometer reads the state that two bodies share once heat stops flowing between them. We assume the gas is in classical thermal equilibrium at absolute temperature $T$, where statistical mechanics gives each of the three directions of a particle's movement an average energy of $\tfrac{1}{2}k_B T$. This assumption carries the physics of the piece. It says that bodies exchanging heat settle to equal energy of movement per molecule.
 
 **Theorem 2.** *Temperature is two-thirds of the motion, $k_B T = \tfrac{2}{3}\,w$.*
 
 *Proof.* Three directions each carry $\tfrac{1}{2}k_B T$, so $w = \tfrac{3}{2}k_B T$. $\square$
 
-Putting one theorem into the other gives $P = n\,k_B T$, which is the ideal gas law.
+The number per volume appears in Theorem 1 and is absent from Theorem 2. That absence is the difference between the two measurements. Putting one theorem into the other gives $P = n\,k_B T$, which is the ideal gas law.
 
-**Corollary 1.** *Every relation among pressure, temperature and number can be read off $P = n\,k_B T$.*
+**Corollary 1.** *Adding molecules at a fixed motion raises the pressure in proportion and leaves the temperature unchanged.*
 
-Add molecules at a fixed temperature and the pressure rises. Warm the gas with the number fixed and the pressure rises. Cool the gas while adding molecules and the pressure goes whichever way the larger change pushes it.
+*Proof.* With $w$ fixed, Theorem 1 makes $P$ proportional to $n$ and Theorem 2 fixes $T$. $\square$
 
-The result stops where the assumptions do. Molecules that attract and repel add to the pressure, so a dense gas departs from the law. It would be false if a real gas at equilibrium did not approach $P = n\,k_B T$ as its density fell.
+**Corollary 2.** *Two thin gases separated by a fixed wall that lets heat through settle to equal temperatures and their pressures then stand in the ratio of their numbers per volume.*
 
-The balloon in the cold lost no air. Its molecules slowed and their push on the skin fell.
+*Proof.* Heat flows through the wall until the two share a temperature, so by Theorem 2 they share a motion $w$. By Theorem 1 their pressures are $\tfrac{2}{3}n_1 w$ and $\tfrac{2}{3}n_2 w$. $\square$
+
+A wall free to move would also equalize the pressures, which is why the wall in Corollary 2 is fixed. Across it the two measurements part. The gases agree on temperature and disagree on pressure for as long as their numbers per volume differ.
+
+They part in the other direction too. A beam of molecules all moving one way at one speed delivers a push to any surface it strikes, so it has a pressure on that surface. Its energy is not shared among the three directions, so it is not in the equilibrium Theorem 2 assumes and it has no single temperature. The push needs only motion and number. The temperature needs the motion to have settled.
+
+The result stops where the assumptions do. Molecules that take up room add to the push and their attraction takes from it, so a dense gas departs from the law. The arithmetic of the two theorems cannot fail. The claim about the world is the assumption behind Theorem 2 and it would be false if two thin gases on either side of a fixed wall that lets heat through settled to unequal energies of movement per molecule, or if a real gas at equilibrium did not approach $P = n\,k_B T$ as its density fell.
+
+The balloon in the cold lost no air. Its molecules slowed, each carried less energy and the balloon shrank until the slower, more crowded molecules pushed back as hard as the air outside.
