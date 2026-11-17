@@ -17,6 +17,8 @@
   var W0 = 1.5 * SIGMA * SIGMA;                     // mean energy of movement at the start, mass 1
   var KT0 = (2 / 3) * W0, P0 = (2 / 3) * (N0 / V) * W0;
   var parts = [], hits = [], last = null, Ps = P0, Ws = W0, f = 1;
+  var VREF = 4 * SIGMA, PMAX = 9 * P0, HISTS = [];
+  for (var hb = 0; hb < 36; hb++) HISTS.push(0);
   var still = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var dark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)");
 
@@ -63,37 +65,40 @@
     return { t: d ? "#ff8a4c" : "#d65a1f", p: d ? "#b694ff" : "#7041c9", v: d ? "#7ea2ff" : "#2f62cf" };
   }
 
-  var PAD = 26;
+  var PAD = 26, GAUGE = 40, HIST = 74, GAP = 30;
   function draw(dt) {
-    var w = canvas.clientWidth, h = canvas.clientHeight, dpr = window.devicePixelRatio || 1;
+    var w = canvas.clientWidth, dpr = window.devicePixelRatio || 1;
+    var fg = getComputedStyle(fig).color, c = colors(), fam = getComputedStyle(fig).fontFamily;
+    var bw = w - 2 * PAD - GAUGE - 22, s = bw / W, bh = H * s;
+    var h = PAD + bh + GAP + HIST + 22;
+    canvas.style.height = h + "px";
     if (canvas.width !== Math.round(w * dpr) || canvas.height !== Math.round(h * dpr)) {
       canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
     }
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
     ctx.clearRect(0, 0, w, h);
-    var fg = getComputedStyle(fig).color, c = colors();
-    var bw = w - 2 * PAD - 18, s = bw / W, bh = H * s;
-    var X = function (x) { return PAD + x * s; }, Y = function (y) { return PAD + (H - y) * s; };
+    var x0 = PAD + 22;
+    var X = function (x) { return x0 + x * s; }, Y = function (y) { return PAD + (H - y) * s; };
+    var hue = function (v) { return "hsl(" + (220 - 210 * Math.min(1, v / VREF)) + " 72% 55%)"; };
 
     ctx.strokeStyle = fg; ctx.lineWidth = 1.5;
     ctx.strokeRect(X(0), Y(H), bw, bh);
 
     // particles: colour by speed, nearer ones larger
-    var vref = 4 * SIGMA;
     for (var i = 0; i < parts.length; i++) {
-      var p = parts[i], sp = Math.min(1, Math.sqrt(p.vx * p.vx + p.vy * p.vy + p.vz * p.vz) / vref);
-      ctx.fillStyle = "hsl(" + (220 - 210 * sp) + " 72% 55%)";
+      var p = parts[i];
+      ctx.fillStyle = hue(Math.sqrt(p.vx * p.vx + p.vy * p.vy + p.vz * p.vz));
       ctx.beginPath(); ctx.arc(X(p.x), Y(p.y), 1.4 + 1.6 * p.z, 0, 2 * Math.PI); ctx.fill();
     }
 
-    // wall hits: the length of each mark is the size of the kick
+    // P is measured at the wall: every hit marks the wall, the length of the mark is the kick
     ctx.strokeStyle = c.p; ctx.lineWidth = 2;
     var jref = 2 * SIGMA;
     for (var k = hits.length - 1; k >= 0; k--) {
       var q = hits[k]; q[3] += dt;
       if (q[3] > 0.2) { hits.splice(k, 1); continue; }
       ctx.globalAlpha = 1 - q[3] / 0.2;
-      var L = Math.min(16, 5 * q[2] / jref);
+      var L = Math.min(14, 5 * q[2] / jref);
       ctx.beginPath();
       if (q[0] === 0) { ctx.moveTo(X(0), Y(q[1])); ctx.lineTo(X(0) - L, Y(q[1])); }
       else if (q[0] === 1) { ctx.moveTo(X(W), Y(q[1])); ctx.lineTo(X(W) + L, Y(q[1])); }
@@ -103,15 +108,51 @@
     }
     ctx.globalAlpha = 1;
 
+    // the pressure gauge, filled by the push on the walls
+    var gx = X(W) + 22, gw = 12, frac = Math.min(1, Ps / PMAX);
+    ctx.strokeStyle = c.p; ctx.lineWidth = 1.5;
+    ctx.strokeRect(gx, Y(H), gw, bh);
+    ctx.fillStyle = c.p;
+    ctx.fillRect(gx, Y(0) - frac * bh, gw, frac * bh);
+    ctx.textAlign = "center"; ctx.textBaseline = "bottom";
+    ctx.font = "italic 18px " + fam;
+    ctx.fillText("P", gx + gw / 2, Y(H) - 6);
+
     // V: the fixed box
-    var bx = X(W) + 20;
+    var vx = PAD - 6;
     ctx.strokeStyle = c.v; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.moveTo(bx - 4, Y(0)); ctx.lineTo(bx, Y(0)); ctx.lineTo(bx, Y(H)); ctx.lineTo(bx - 4, Y(H)); ctx.stroke();
-    ctx.clearRect(bx - 8, Y(H / 2) - 11, 16, 22);
-    ctx.fillStyle = c.v; ctx.textAlign = "center"; ctx.textBaseline = "middle";
-    ctx.font = "italic 17px " + getComputedStyle(fig).fontFamily;
-    ctx.fillText("V", bx, Y(H / 2));
-    canvas.style.height = (bh + 2 * PAD) + "px";
+    ctx.beginPath(); ctx.moveTo(vx + 4, Y(0)); ctx.lineTo(vx, Y(0)); ctx.lineTo(vx, Y(H)); ctx.lineTo(vx + 4, Y(H)); ctx.stroke();
+    ctx.clearRect(vx - 8, Y(H / 2) - 11, 16, 22);
+    ctx.fillStyle = c.v; ctx.textBaseline = "middle";
+    ctx.font = "italic 17px " + fam;
+    ctx.fillText("V", vx, Y(H / 2));
+
+    // T is measured from the particles themselves: the share of them at each speed,
+    // which does not change when particles are added or removed
+    var top = Y(0) + GAP, base = top + HIST, bins = 36, vmax = 1.6 * VREF, cnt = [], peak = 0;
+    for (i = 0; i < bins; i++) cnt[i] = 0;
+    var sum2 = 0;
+    for (i = 0; i < parts.length; i++) {
+      var v2 = parts[i].vx * parts[i].vx + parts[i].vy * parts[i].vy + parts[i].vz * parts[i].vz;
+      sum2 += v2;
+      var b = Math.min(bins - 1, Math.floor(Math.sqrt(v2) / vmax * bins));
+      cnt[b]++;
+    }
+    for (i = 0; i < bins; i++) { cnt[i] /= parts.length; HISTS[i] += (cnt[i] - HISTS[i]) * Math.min(1, dt / 0.6 || 1); peak = Math.max(peak, HISTS[i]); }
+    var cw = bw / bins, scaleY = HIST / Math.max(peak, 0.12);
+    for (i = 0; i < bins; i++) {
+      ctx.fillStyle = hue((i + 0.5) / bins * vmax);
+      ctx.fillRect(X(0) + i * cw + 0.5, base - HISTS[i] * scaleY, cw - 1, HISTS[i] * scaleY);
+    }
+    ctx.strokeStyle = fg; ctx.lineWidth = 1;
+    ctx.beginPath(); ctx.moveTo(X(0), base + 0.5); ctx.lineTo(X(W), base + 0.5); ctx.stroke();
+    // the line sits at the speed that carries the average energy of movement
+    var vrms = Math.sqrt(sum2 / parts.length), lx = X(0) + Math.min(1, vrms / vmax) * bw;
+    ctx.strokeStyle = c.t; ctx.lineWidth = 2;
+    ctx.beginPath(); ctx.moveTo(lx, top - 4); ctx.lineTo(lx, base); ctx.stroke();
+    ctx.fillStyle = c.t; ctx.textBaseline = "bottom"; ctx.textAlign = "center";
+    ctx.font = "italic 18px " + fam;
+    ctx.fillText("T", lx, top - 6);
   }
 
   function report() {
